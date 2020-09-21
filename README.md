@@ -1,3 +1,15 @@
+# Twitter clone (React, Firebase, Node JS)
+
+| Tinder                                                                               | React                                                                                   |
+| ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------- |
+| ![Twitter](https://iconarchive.com/icons/xenatt/minimalism/256/App-Twitter-icon.png) | ![enter image description here](https://files.readme.io/320345b-React_Logo_256x256.png) |
+
+This nice **React** application is a clone of basic Twitter app.
+
+## Demo
+
+# About the solution
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
