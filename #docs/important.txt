@@ -1,0 +1,49 @@
+For using react flip move in Post.js we use "forwardRef"
+
+BEFORE:
+-------
+const Post = 
+  (
+    {
+      displayName,
+      username,
+      verified,
+      timestamp,
+      text,
+      image,
+      imageAlt,
+      avatar,
+
+      comments,
+      numComments,
+      retweets,
+      likes,
+      share,
+    }
+  )
+
+AFTER (added ref):
+------------------
+const Post = forwardRef(
+  (
+    {
+      displayName,
+      username,
+      verified,
+      timestamp,
+      text,
+      image,
+      imageAlt,
+      avatar,
+
+      comments,
+      numComments,
+      retweets,
+      likes,
+      share,
+    },
+    ref
+  )
+
+
+  In Feed.js (where Post.js is used) w will animate the post items.

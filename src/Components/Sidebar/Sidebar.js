@@ -25,15 +25,28 @@ const Sidebar = () => {
       {/* <SidebarOption text="Explore" Icon={SearchIcon} /> */}
       <SidebarOption text="Explore" Character={"#"} />
 
-      <SidebarOption text="Notifications" Icon={NotificationsNoneIcon} />
-      <SidebarOption text="Messages" Icon={MailOutlineIcon} />
-      <SidebarOption text="Bookmarks" Icon={BookmarkBorderIcon} />
-      <SidebarOption text="Lists" Icon={ListAltIcon} />
-      <SidebarOption text="Profile" Icon={PermIdentityIcon} />
-      <SidebarOption text="More" Icon={MoreHorizIcon} />
+      <SidebarOption
+        key="Notifications"
+        text="Notifications"
+        Icon={NotificationsNoneIcon}
+      />
+      <SidebarOption key="Messages" text="Messages" Icon={MailOutlineIcon} />
+      <SidebarOption
+        key="Bookmarks"
+        text="Bookmarks"
+        Icon={BookmarkBorderIcon}
+      />
+      <SidebarOption key="Lists" text="Lists" Icon={ListAltIcon} />
+      <SidebarOption key="Profile" text="Profile" Icon={PermIdentityIcon} />
+      <SidebarOption key="More" text="More" Icon={MoreHorizIcon} />
 
       {/* Button -> Tweet */}
-      <Button variant="outlined" className="sidebar__tweetButton" fullWidth>
+      <Button
+        key="TweetButton"
+        variant="outlined"
+        className="sidebar__tweetButton"
+        fullWidth
+      >
         Tweet
       </Button>
     </div>

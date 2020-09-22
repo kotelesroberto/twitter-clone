@@ -7,6 +7,9 @@ import { db } from "../../firebase/firebase";
 import TweetBox from "../TweetBox/TweetBox";
 import Post from "../Post/Post";
 
+// Animation (using forwardRef)
+import FlipMove from "react-flip-move";
+
 const Feed = () => {
   const [tweets, setTweets] = useState([]);
 
@@ -15,7 +18,14 @@ const Feed = () => {
       .collection("tweets")
       .orderBy("timestamp", "desc")
       .onSnapshot((snapshot) =>
-        setTweets(snapshot.docs.map((doc) => doc.data()))
+        setTweets(
+          snapshot.docs.map((doc) => {
+            return {
+              ...doc.data(),
+              id: doc.id,
+            };
+          })
+        )
       );
     //effect
     return () => {
@@ -33,24 +43,27 @@ const Feed = () => {
       {/* TweetBox */}
       <TweetBox />
 
-      {tweets.map((tweet) => (
-        <Post
-          avatar={tweet.avatar}
-          displayName={tweet.displayName}
-          username={tweet.username}
-          text={tweet.text}
-          timestamp={tweet.timestamp}
-          verified={tweet.verified}
-          image={tweet.image}
-          imageAlt={tweet.imageAlt}
-          comments={tweet.comments}
-          numComments={tweet.numComments}
-          retweets={tweet.retweets}
-          likes={tweet.likes}
-          share={tweet.share}
-        />
-      ))}
-      {/* Post */}
+      <FlipMove>
+        {tweets.map((tweet) => (
+          <Post
+            key={tweet.id}
+            avatar={tweet.avatar}
+            displayName={tweet.displayName}
+            username={tweet.username}
+            text={tweet.text}
+            timestamp={tweet.timestamp}
+            verified={tweet.verified}
+            image={tweet.image}
+            imageAlt={tweet.imageAlt}
+            comments={tweet.comments}
+            numComments={tweet.numComments}
+            retweets={tweet.retweets}
+            likes={tweet.likes}
+            share={tweet.share}
+          />
+        ))}
+      </FlipMove>
+
       {/* 
       
       <Post
