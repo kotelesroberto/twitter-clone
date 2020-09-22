@@ -27,8 +27,6 @@ const TweetBox = () => {
           placeholder="Just for demo: Enter image url"
         />
 
-        {/* Button -> Tweet */}
-
         <div className="tweetBox__footer">
           <div className="tweetBox__footerIcons">
             <CropOriginalIcon />
