@@ -1,6 +1,9 @@
 import React from "react";
 import "./Post.scss";
 
+import Moment from "react-moment";
+import "moment-timezone";
+
 import { Avatar } from "@material-ui/core";
 import VerifiedUserIcon from "@material-ui/icons/VerifiedUser";
 import ChatBubbleOutlineIcon from "@material-ui/icons/ChatBubbleOutline";
@@ -20,12 +23,13 @@ const Post = ({
   avatar,
 
   comments,
+  numComments,
   retweets,
   likes,
   share,
 }) => {
   return (
-    <div className="post">
+    <article className="post">
       <ExpandMoreIcon className="post__dropDown" />
       <div className="post__avatar">
         <Avatar lassName="tweetBox__avatar" alt="" src={avatar} />
@@ -37,7 +41,10 @@ const Post = ({
               {displayName}
               <span className="post__headerSpecial">
                 {verified && <VerifiedUserIcon className="post__badge" />} @
-                {username} - {timestamp}
+                {username} -{" "}
+                <Moment interval={30000} fromNow unix>
+                  {timestamp}
+                </Moment>
               </span>
             </h3>
           </div>
@@ -49,13 +56,24 @@ const Post = ({
         <img src={image} alt={imageAlt} />
 
         <div className="post__footer">
-          <ChatBubbleOutlineIcon fontSize="small" />
-          <RepeatIcon fontSize="small" />
-          <FavoriteBorderIcon fontSize="small" />
-          <PublishIcon fontSize="small" />
+          <div>
+            <ChatBubbleOutlineIcon fontSize="small" />{" "}
+            {numComments && <span>{numComments}</span>}
+          </div>
+          <div>
+            <RepeatIcon fontSize="small" />{" "}
+            {retweets && <span>{retweets}</span>}
+          </div>
+          <div>
+            <FavoriteBorderIcon fontSize="small" />{" "}
+            {likes && <span>{likes}</span>}
+          </div>
+          <div>
+            <PublishIcon fontSize="small" /> {share && <span>{share}</span>}
+          </div>
         </div>
       </div>
-    </div>
+    </article>
   );
 };
 

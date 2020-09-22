@@ -2,6 +2,9 @@
   "folders": [
     {
       "path": "."
+    },
+    {
+      "path": "../twitter-clone-firebase-import"
     }
   ],
   "settings": {}

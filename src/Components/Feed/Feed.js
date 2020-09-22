@@ -1,11 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Feed.scss";
+
+import { db } from "../../firebase/firebase";
 
 // Components
 import TweetBox from "../TweetBox/TweetBox";
 import Post from "../Post/Post";
 
 const Feed = () => {
+  const [tweets, setTweets] = useState([]);
+
+  useEffect(() => {
+    const unsubscribe = db
+      .collection("tweets")
+      .orderBy("timestamp", "desc")
+      .onSnapshot((snapshot) =>
+        setTweets(snapshot.docs.map((doc) => doc.data()))
+      );
+    //effect
+    return () => {
+      // cleanup
+      unsubscribe(); // this function is given back by onSnapshot
+    };
+  }, []);
+
   return (
     <div className="feed">
       <div className="feed__header">
@@ -15,7 +33,26 @@ const Feed = () => {
       {/* TweetBox */}
       <TweetBox />
 
+      {tweets.map((tweet) => (
+        <Post
+          avatar={tweet.avatar}
+          displayName={tweet.displayName}
+          username={tweet.username}
+          text={tweet.text}
+          timestamp={tweet.timestamp}
+          verified={tweet.verified}
+          image={tweet.image}
+          imageAlt={tweet.imageAlt}
+          comments={tweet.comments}
+          numComments={tweet.numComments}
+          retweets={tweet.retweets}
+          likes={tweet.likes}
+          share={tweet.share}
+        />
+      ))}
       {/* Post */}
+      {/* 
+      
       <Post
         avatar="https://m.media-amazon.com/images/I/51qyXfsyjRL._AA256_.jpg"
         displayName="Robert Koteles"
@@ -25,15 +62,17 @@ const Feed = () => {
         verified
         image="https://s3.amazonaws.com/images.seroundtable.com/twitter-london-office-1403005449.jpg"
         imageAlt="Twitter London"
+        comments={[]}
+        numComments={5}
+        retweets={13}
+        likes={35}
+        share={23}
       />
       <Post
         avatar="https://m.media-amazon.com/images/I/51qyXfsyjRL._AA256_.jpg"
         displayName="Robert Koteles"
         username="kotelesroberto"
-        text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis
-              nisi autem quidem voluptate corrupti vero corporis consectetur
-              molestias iste magni sunt, obcaecati, id dolores sequi minus,
-              minima iure provident soluta."
+        text="Twitter is an American microblogging and social networking service on which users post and interact with messages known as tweets."
         timestamp="5m"
         verified
         image="https://www.tothepoint.co.uk/wp-content/uploads/2015/11/Twitter_London_Interiors_01_2014_01_14.jpg"
@@ -65,6 +104,7 @@ const Feed = () => {
         image="https://www.tothepoint.co.uk/wp-content/uploads/2015/11/Twitter_London_Interiors_01_2014_01_14.jpg"
         imageAlt="Twitter London"
       />
+      */}
     </div>
   );
 };

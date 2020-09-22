@@ -6,6 +6,11 @@
   border-bottom: 1px solid $twitter-bgcolor;
   // padding-bottom: 10px;
   position: relative;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #f5f8fa;
+  }
 
   &__dropDown {
     position: absolute;
@@ -63,8 +68,19 @@
     display: flex;
     justify-content: space-between;
     // margin-top: 20px;
+    & > div {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
 
-    & > .MuiSvgIcon-root {
+      & > span {
+        margin-left: 5px;
+        font-size: 13px;
+        color: $grey;
+      }
+    }
+
+    & .MuiSvgIcon-root {
       color: $grey;
       height: 40px;
       cursor: pointer;

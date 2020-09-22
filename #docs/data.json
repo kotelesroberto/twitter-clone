@@ -1,0 +1,32 @@
+[
+  {
+    "displayName": "Robert Koteles",
+    "username": "RobertKoteles1",
+    "verified": true,
+    "timestamp": 1597749071,
+    "text": "This is the place where I would like to work. :)",
+    "image": "https://s3.amazonaws.com/images.seroundtable.com/twitter-london-office-1403005449.jpg",
+    "imageAlt": "User alt text",
+    "avatar": "https://m.media-amazon.com/images/I/51qyXfsyjRL._AA256_.jpg",
+    "comments": "",
+    "numComments": 12,
+    "retweets": 43,
+    "likes": 113,
+    "share": 0
+  },
+  {
+    "displayName": "Robert Koteles",
+    "username": "RobertKoteles1",
+    "verified": true,
+    "timestamp": 1600768800,
+    "text": "Twitter is an American microblogging and social networking service on which users post and interact with messages known as tweets.",
+    "image": "https://www.tothepoint.co.uk/wp-content/uploads/2015/11/Twitter_London_Interiors_01_2014_01_14.jpg",
+    "imageAlt": "User alt text",
+    "avatar": "https://m.media-amazon.com/images/I/51qyXfsyjRL._AA256_.jpg",
+    "comments": "",
+    "numComments": 234,
+    "retweets": 122,
+    "likes": 13,
+    "share": 10
+  }
+]
