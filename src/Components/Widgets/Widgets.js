@@ -1,5 +1,5 @@
 import React from "react";
-import "./Widgets.css";
+import "./Widgets.scss";
 
 const Widgets = () => {
   return (

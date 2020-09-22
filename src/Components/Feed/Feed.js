@@ -1,5 +1,5 @@
 import React from "react";
-import "./Feed.css";
+import "./Feed.scss";
 
 const Feed = () => {
   return (

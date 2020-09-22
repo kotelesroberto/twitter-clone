@@ -1,0 +1,21 @@
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin calculateFluidFontSize($fontSize, $lineHeight, $screenLimit) {
+  /* FONT SIZE */
+
+  @if $screenLimit == 0 {
+    font-size: $fontSize + px;
+    line-height: $lineHeight + px;
+  } @else {
+    font-size: $fontSize + px;
+    line-height: $lineHeight + px;
+    font-size: (($fontSize / $screenLimit) * 100) + vw;
+    line-height: (($lineHeight / $screenLimit) * 100) + vw;
+  }
+}

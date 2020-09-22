@@ -1,5 +1,5 @@
 import React from "react";
-import "./App.css";
+import "./App.scss";
 import Feed from "./Components/Feed/Feed";
 import Sidebar from "./Components/Sidebar/Sidebar";
 import Widgets from "./Components/Widgets/Widgets";
