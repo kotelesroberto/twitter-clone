@@ -11,8 +11,24 @@ import ChatBubbleOutlineIcon from "@material-ui/icons/ChatBubbleOutline";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import Button from "@material-ui/core/Button";
 
-console.log(twitterBG);
+import { useStateValue } from "../../StateProvider";
+
 const LoginScreen = () => {
+  const [{ user }, dispatch] = useStateValue();
+
+  const doSignup = () => {};
+  const doLogin = () => {
+    dispatch({
+      type: "SET_USER",
+      user: {
+        displayName: "Robert Koteles",
+        username: "RobertKoteles1",
+        verified: true,
+        avatar: "https://m.media-amazon.com/images/I/51qyXfsyjRL._AA256_.jpg",
+      },
+    });
+  };
+
   return (
     <div className="loginScreen">
       <div className="loginScreen__header">
@@ -54,6 +70,7 @@ const LoginScreen = () => {
               variant="outlined"
               className="loginScreen__button"
               fullWidth
+              onClick={doSignup}
             >
               Sign up
             </Button>
@@ -63,8 +80,9 @@ const LoginScreen = () => {
               variant="outlined"
               className="loginScreen__button reverse"
               fullWidth
+              onClick={doLogin}
             >
-              Log in
+              DEMO Log in
             </Button>
           </div>
         </div>

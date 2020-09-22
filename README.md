@@ -30,6 +30,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 - Firebase (storage and database)
 
+- React State / React Context / Reducer
+
 ## Available Scripts
 
 In the project directory, you can run:
