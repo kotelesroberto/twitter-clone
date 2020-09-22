@@ -21,9 +21,12 @@ h5 {
 }
 
 .App {
-  @include maxPageWidth;
   display: flex;
   flex-direction: row;
   height: 100vh;
   width: 100%;
+
+  &.max-width {
+    @include maxPageWidth;
+  }
 }

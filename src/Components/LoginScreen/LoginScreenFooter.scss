@@ -1,0 +1,28 @@
+@import "../../style/base/colors";
+
+.loginScreenFooter {
+  height: 50px;
+
+  nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+  a,
+  span {
+    padding: 0 5px;
+    font-size: 13px;
+    color: $grey;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  span {
+  }
+}

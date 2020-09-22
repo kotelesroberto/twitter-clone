@@ -1,0 +1,110 @@
+@import "../../style/base/colors";
+
+.loginScreen {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  &__header {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: calc(100vh - 50px);
+  }
+
+  &__col {
+    flex: 0.5;
+    background-color: #70c9f7;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  &__left {
+  }
+  &__right {
+    background-color: $white;
+    flex-direction: column;
+  }
+
+  &__intro {
+    z-index: 10;
+  }
+
+  &__leftBgImg {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: auto;
+    height: 150vh;
+    object-fit: cover;
+    transform: translate(40%, -50%);
+    z-index: 1;
+  }
+
+  &__introItem {
+    display: flex;
+    align-items: center;
+    font-size: 19px;
+    line-height: 25px;
+    font-weight: 800;
+    color: $white;
+    margin-bottom: 40px;
+  }
+
+  &__introItemIcon {
+    margin-right: 15px;
+  }
+
+  &__loginPanel {
+    max-width: 380px;
+
+    & > h2 {
+      font-size: 30px;
+      line-height: 1.3;
+      margin-top: 20px;
+      margin-bottom: 60px;
+    }
+
+    & > p {
+      font-size: 15px;
+      font-weight: 700;
+    }
+  }
+
+  &__icon {
+    color: $twitter-color;
+  }
+
+  &__button {
+    &.MuiButton-root {
+      background-color: $twitter-color;
+      border: none;
+      color: $white;
+      font-weight: 800;
+      text-transform: inherit;
+      border-radius: 30px;
+      height: 50px;
+      margin-top: 20px;
+
+      &:hover {
+        background-color: $twitter-color;
+        color: $white;
+      }
+    }
+
+    &.reverse {
+      &.MuiButton-root {
+        background-color: $white;
+        border: 1px solid $twitter-color;
+        color: $twitter-color;
+
+        &:hover {
+          background-color: $twitter-color;
+          color: $white;
+        }
+      }
+    }
+  }
+}
