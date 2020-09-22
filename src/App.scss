@@ -1,5 +1,6 @@
 /* Utilities */
 @import "./style/utilities/normalize";
+@import "./style/utilities/mixins";
 
 html,
 body {
@@ -17,4 +18,12 @@ h3,
 h4,
 h5 {
   margin: 0;
+}
+
+.App {
+  @include maxPageWidth;
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  width: 100%;
 }

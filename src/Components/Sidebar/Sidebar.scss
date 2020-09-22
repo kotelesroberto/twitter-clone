@@ -1,6 +1,21 @@
 @import "../../style/base/colors";
 
 .sidebar {
+  border-right: 1px solid $twitter-bgcolor;
+  flex: 0.3;
+  min-width: 250px;
+  padding: 20px;
+
+  &__twitterIcon {
+    color: $twitter-color;
+    margin-left: 20px;
+    margin-bottom: 20px;
+
+    &.MuiSvgIcon-root {
+      font-size: 30px;
+    }
+  }
+
   &__tweetButton {
     &.MuiButton-root {
       background-color: $twitter-color;

@@ -1,0 +1,77 @@
+@import "../../style/base/colors";
+
+.post {
+  display: flex;
+  align-items: flex-start;
+  border-bottom: 1px solid $twitter-bgcolor;
+  // padding-bottom: 10px;
+  position: relative;
+
+  &__dropDown {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    z-index: 10;
+    cursor: pointer;
+    color: $grey;
+  }
+
+  &__avatar {
+    padding: 10px;
+  }
+
+  &__body {
+    flex: 1;
+    padding: 10px 10px 0 10px;
+    img {
+      border-radius: 20px;
+      width: 100%;
+      max-width: 100%;
+      object-fit: contain;
+    }
+  }
+
+  &__header {
+  }
+
+  &__headerSpecial {
+    font-weight: 600;
+    font-size: 12px;
+    color: $grey;
+  }
+
+  &__headerText {
+    & > h3 {
+      font-size: 15px;
+      margin-bottom: 5px;
+    }
+  }
+
+  &__badge {
+    &.MuiSvgIcon-root {
+      font-size: 14px;
+      color: $twitter-color;
+    }
+  }
+
+  &__headerDescription {
+    margin-bottom: 10px;
+    font-size: 15px;
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+    // margin-top: 20px;
+
+    & > .MuiSvgIcon-root {
+      color: $grey;
+      height: 40px;
+      cursor: pointer;
+
+      &:hover {
+        color: $twitter-color;
+      }
+    }
+  }
+}

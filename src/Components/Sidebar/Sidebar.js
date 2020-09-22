@@ -4,7 +4,7 @@ import "./Sidebar.scss";
 // ICONS
 import TwitterIcon from "@material-ui/icons/Twitter";
 import HomeIcon from "@material-ui/icons/Home";
-import SearchIcon from "@material-ui/icons/Search";
+// import SearchIcon from "@material-ui/icons/Search";
 import NotificationsNoneIcon from "@material-ui/icons/NotificationsNone";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import BookmarkBorderIcon from "@material-ui/icons/BookmarkBorder";
@@ -18,13 +18,13 @@ import SidebarOption from "../SidebarOption/SidebarOption";
 
 const Sidebar = () => {
   return (
-    <div classN ame="sidebar">
-      <h1>sidebar</h1>
-
-      <TwitterIcon Icon={HomeIcon} />
+    <div className="sidebar">
+      <TwitterIcon Icon={HomeIcon} className="sidebar__twitterIcon" />
 
       <SidebarOption active text="Home" Icon={HomeIcon} />
-      <SidebarOption text="Explore" Icon={SearchIcon} />
+      {/* <SidebarOption text="Explore" Icon={SearchIcon} /> */}
+      <SidebarOption text="Explore" Character={"#"} />
+
       <SidebarOption text="Notifications" Icon={NotificationsNoneIcon} />
       <SidebarOption text="Messages" Icon={MailOutlineIcon} />
       <SidebarOption text="Bookmarks" Icon={BookmarkBorderIcon} />

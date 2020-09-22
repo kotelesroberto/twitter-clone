@@ -4,17 +4,18 @@
   display: flex;
   align-items: center;
   cursor: pointer;
+  transition: all 0.1s ease-in-out;
 
   &:hover {
     background-color: #e8f5fe;
     border-radius: 30px;
     // color: var(--twitter-color);
     color: $twitter-color;
-    transition: all 0.1s ease-in-out;
   }
 
   & > .MuiSvgIcon-root {
     padding: 20px;
+    text-align: center;
   }
 
   & > h2 {

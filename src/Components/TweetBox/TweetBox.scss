@@ -1,0 +1,79 @@
+@import "../../style/base/colors";
+
+.tweetBox {
+  padding-bottom: 10px;
+  border-bottom: 8px solid $twitter-bgcolor;
+
+  & > form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__input {
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+
+    & > input {
+      flex: 1;
+      margin-left: 20px;
+      font-size: 20px;
+      border: none;
+      outline: none;
+    }
+  }
+
+  &__avatar {
+  }
+
+  &__imageInput {
+    border: 0;
+    padding: 20px;
+    outline: none;
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  &__footerIcons {
+    display: flex;
+    align-items: center;
+
+    & > .MuiSvgIcon-root {
+      color: $twitter-color;
+      height: 40px;
+      padding: 5px;
+      margin-left: auto;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #e8f5fe;
+        border-radius: 30px;
+        // color: var(--twitter-color);
+        color: $twitter-color;
+      }
+    }
+  }
+
+  &__tweetButton {
+    &.MuiButton-root {
+      background-color: $twitter-color;
+      border: none;
+      color: $white;
+      font-weight: 800;
+      text-transform: inherit;
+      border-radius: 30px;
+      height: 40px;
+
+      margin-left: auto;
+
+      &:hover {
+        background-color: $twitter-color;
+        color: $white;
+      }
+    }
+  }
+}
