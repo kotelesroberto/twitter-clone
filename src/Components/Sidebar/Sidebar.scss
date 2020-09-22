@@ -1,2 +1,21 @@
+@import "../../style/base/colors";
+
 .sidebar {
+  &__tweetButton {
+    &.MuiButton-root {
+      background-color: $twitter-color;
+      border: none;
+      color: $white;
+      font-weight: 800;
+      text-transform: inherit;
+      border-radius: 30px;
+      height: 50px;
+      margin-top: 20px;
+
+      &:hover {
+        background-color: $twitter-color;
+        color: $white;
+      }
+    }
+  }
 }
