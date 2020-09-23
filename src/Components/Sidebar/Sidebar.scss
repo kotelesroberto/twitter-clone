@@ -1,10 +1,28 @@
 @import "../../style/base/colors";
 
+/* Hide scrollbar for Chrome, Safari and Opera */
+.sidebar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.sidebar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
 .sidebar {
   border-right: 1px solid $twitter-bgcolor;
   flex: 0.3;
   min-width: 250px;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow-y: auto;
+
+  &__nav {
+  }
 
   &__twitterIcon {
     color: $twitter-color;

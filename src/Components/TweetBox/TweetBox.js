@@ -1,4 +1,3 @@
-import { Avatar, Button } from "@material-ui/core";
 import React, { useState } from "react";
 import "./TweetBox.scss";
 
@@ -10,7 +9,16 @@ import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
 import ScheduleIcon from "@material-ui/icons/Schedule";
 import { db } from "../../firebase/firebase";
 
+import { Avatar, Button } from "@material-ui/core";
+
+// React Context
+import { useStateValue } from "../../StateProvider";
+
 const TweetBox = () => {
+  // context data
+  const [{ user }, dispatch] = useStateValue();
+  console.log("user >>>", user);
+
   const [tweetMsg, setTweetMsg] = useState("");
   const [tweetMsgImg, setTweetMsgImg] = useState("");
 
@@ -19,14 +27,14 @@ const TweetBox = () => {
 
     // save into Firebase database
     db.collection("tweets").add({
-      displayName: "Robert Koteles",
-      username: "RobertKoteles1",
-      verified: true,
+      displayName: user.displayName,
+      username: user.username,
+      verified: user.verified,
       timestamp: Date.now() / 1000,
       text: tweetMsg,
       image: tweetMsgImg,
       imageAlt: "",
-      avatar: "https://m.media-amazon.com/images/I/51qyXfsyjRL._AA256_.jpg",
+      avatar: user.avatar,
       comments: "",
       numComments: Math.floor(Math.random() * 1000) + 1,
       retweets: Math.floor(Math.random() * 1000) + 1,
@@ -45,8 +53,8 @@ const TweetBox = () => {
         <div className="tweetBox__input">
           <Avatar
             lassName="tweetBox__avatar"
-            alt=""
-            src="https://m.media-amazon.com/images/I/51qyXfsyjRL._AA256_.jpg"
+            alt={user.dispatch}
+            src={user.avatar}
           />
           <input
             type="text"

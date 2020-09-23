@@ -1,0 +1,36 @@
+@import "../../style/base/colors";
+
+.sidebarProfile {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+  padding: 10px;
+  margin-top: 20px;
+
+  &:hover {
+    background-color: #e8f5fe;
+    border-radius: 30px;
+  }
+
+  &__avatar {
+    margin-right: 10px;
+  }
+  &__body {
+    & > h3 {
+      font-size: 15px;
+      span {
+        display: block;
+        font-weight: 400;
+        color: $twitter-grey;
+      }
+    }
+  }
+
+  &__dropDown {
+    z-index: 10;
+    cursor: pointer;
+    color: $grey;
+    margin-left: auto;
+  }
+}

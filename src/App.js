@@ -7,6 +7,7 @@ import Sidebar from "./Components/Sidebar/Sidebar";
 import Feed from "./Components/Feed/Feed";
 import Widgets from "./Components/Widgets/Widgets";
 
+// React Context
 import { useStateValue } from "./StateProvider";
 
 function App() {

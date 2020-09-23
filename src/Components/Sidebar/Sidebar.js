@@ -15,40 +15,45 @@ import Button from "@material-ui/core/Button";
 
 // Components
 import SidebarOption from "../SidebarOption/SidebarOption";
+import SidebarProfile from "../SidebarProfile/SidebarProfile";
 
 const Sidebar = () => {
   return (
     <div className="sidebar">
-      <TwitterIcon Icon={HomeIcon} className="sidebar__twitterIcon" />
+      <div className="sidebar__nav">
+        <TwitterIcon Icon={HomeIcon} className="sidebar__twitterIcon" />
 
-      <SidebarOption active text="Home" Icon={HomeIcon} />
-      {/* <SidebarOption text="Explore" Icon={SearchIcon} /> */}
-      <SidebarOption text="Explore" Character={"#"} />
+        <SidebarOption active text="Home" Icon={HomeIcon} />
+        {/* <SidebarOption text="Explore" Icon={SearchIcon} /> */}
+        <SidebarOption text="Explore" Character={"#"} />
 
-      <SidebarOption
-        key="Notifications"
-        text="Notifications"
-        Icon={NotificationsNoneIcon}
-      />
-      <SidebarOption key="Messages" text="Messages" Icon={MailOutlineIcon} />
-      <SidebarOption
-        key="Bookmarks"
-        text="Bookmarks"
-        Icon={BookmarkBorderIcon}
-      />
-      <SidebarOption key="Lists" text="Lists" Icon={ListAltIcon} />
-      <SidebarOption key="Profile" text="Profile" Icon={PermIdentityIcon} />
-      <SidebarOption key="More" text="More" Icon={MoreHorizIcon} />
+        <SidebarOption
+          key="Notifications"
+          text="Notifications"
+          Icon={NotificationsNoneIcon}
+        />
+        <SidebarOption key="Messages" text="Messages" Icon={MailOutlineIcon} />
+        <SidebarOption
+          key="Bookmarks"
+          text="Bookmarks"
+          Icon={BookmarkBorderIcon}
+        />
+        <SidebarOption key="Lists" text="Lists" Icon={ListAltIcon} />
+        <SidebarOption key="Profile" text="Profile" Icon={PermIdentityIcon} />
+        <SidebarOption key="More" text="More" Icon={MoreHorizIcon} />
 
-      {/* Button -> Tweet */}
-      <Button
-        key="TweetButton"
-        variant="outlined"
-        className="sidebar__tweetButton"
-        fullWidth
-      >
-        Tweet
-      </Button>
+        {/* Button -> Tweet */}
+        <Button
+          key="TweetButton"
+          variant="outlined"
+          className="sidebar__tweetButton"
+          fullWidth
+        >
+          Tweet
+        </Button>
+      </div>
+
+      <SidebarProfile />
     </div>
   );
 };
