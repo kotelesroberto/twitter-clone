@@ -1,4 +1,5 @@
 export const initialState = {
+  loginScreenType: "landing", // landing | panel
   // user: {
   //   id: "44567889898",
   //   displayName: "Jimi Hendrix",
@@ -18,6 +19,12 @@ const reducer = (state, action) => {
   console.log(action);
 
   switch (action.type) {
+    case "SET_LOGINSCREEN":
+      return {
+        ...state,
+        loginScreenType: action.loginScreenType,
+      };
+
     case "SET_USER":
       return {
         ...state,

@@ -11,23 +11,24 @@ import ChatBubbleOutlineIcon from "@material-ui/icons/ChatBubbleOutline";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import Button from "@material-ui/core/Button";
 
+import { Link, useHistory } from "react-router-dom";
+
+// React Context
 import { useStateValue } from "../../StateProvider";
 
 const LoginScreen = () => {
-  const [{ user }, dispatch] = useStateValue();
+  // context data
+  const [{ user, loginScreenType }, dispatch] = useStateValue();
+
+  const history = useHistory(); // it allows us to programmatically change the url (after login for example)
 
   const doSignup = () => {};
   const doLogin = () => {
+    // history.replace("/login");
+
     dispatch({
-      type: "SET_USER",
-      user: {
-        id: "44567889898",
-        displayName: "Jimi Hendrix",
-        occupation: "Musician",
-        username: "JimiHendrix",
-        verified: true,
-        avatar: "https://m.media-amazon.com/images/I/51qyXfsyjRL._AA256_.jpg",
-      },
+      type: "SET_LOGINSCREEN",
+      loginScreenType: "panel",
     });
   };
 
@@ -84,7 +85,7 @@ const LoginScreen = () => {
               fullWidth
               onClick={doLogin}
             >
-              DEMO Log in
+              Log in
             </Button>
           </div>
         </div>

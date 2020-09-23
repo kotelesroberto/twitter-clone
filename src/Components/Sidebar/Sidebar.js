@@ -24,7 +24,7 @@ const Sidebar = () => {
   return (
     <div className="sidebar">
       <div className="sidebar__nav">
-        <TwitterIcon Icon={HomeIcon} className="sidebar__twitterIcon" />
+        <TwitterIcon className="sidebar__twitterIcon" />
 
         <NavLink to="/" activeClassName="active">
           <SidebarOption text="Home" Icon={HomeIcon} />

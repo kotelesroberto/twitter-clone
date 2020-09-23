@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import "./App.scss";
+import Login from "./Components/Login/Login";
 import General from "./Components/General/General";
 import LoginScreen from "./Components/LoginScreen/LoginScreen";
 import Sidebar from "./Components/Sidebar/Sidebar";
@@ -13,15 +14,27 @@ import { useStateValue } from "./StateProvider";
 
 function App() {
   // context data
-  const [{ user }, dispatch] = useStateValue();
+  const [{ user, loginScreenType }, dispatch] = useStateValue();
   return (
     <Router>
       <div className={user ? "App max-width" : "App"}>
-        {!user && <LoginScreen />}
+        {/* {!user && loginScreenType === "landing" ? (
+          <LoginScreen />
+        ) : (
+          <Login />
+        )} */}
+
+        {!user && loginScreenType === "landing" && <LoginScreen />}
+        {!user && loginScreenType === "panel" && <Login />}
 
         {user && (
           <>
-            <Sidebar />
+            <Switch>
+              <Route path="/login"></Route>
+              <Route path="/">
+                <Sidebar key="sidebar" />
+              </Route>
+            </Switch>
 
             <Switch>
               <Route path="/explore">
@@ -45,16 +58,25 @@ function App() {
               <Route path="/more">
                 <General text="more" />
               </Route>
+              {/* 
+              <Route path="/login">
+                <Login key="login" />
+              </Route> */}
 
               <Route path="/home">
-                <Feed />
+                <Feed key="feed" />
               </Route>
               <Route path="/">
-                <Feed />
+                <Feed key="feed" />
               </Route>
             </Switch>
 
-            <Widgets />
+            <Switch>
+              <Route path="/login"></Route>
+              <Route path="/">
+                <Widgets key="widgets" />
+              </Route>
+            </Switch>
           </>
         )}
       </div>

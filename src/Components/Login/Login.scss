@@ -1,0 +1,94 @@
+@import "../../style/base/colors";
+
+.login {
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 600px;
+  width: 100%;
+
+  &__twitterIcon {
+    color: $twitter-color;
+    margin-bottom: 20px;
+
+    &.MuiSvgIcon-root {
+      font-size: 40px;
+    }
+  }
+
+  & > a {
+    display: flex;
+    justify-content: center;
+  }
+
+  & > h2 {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  & > form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__label {
+    background-color: #f5f8fa;
+    padding: 5px;
+  }
+
+  &__input {
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #647785;
+    background-color: #f5f8fa;
+    margin-bottom: 20px;
+  }
+
+  &__footer {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+
+    li {
+      padding: 5px;
+      color: $twitter-color;
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__button {
+    &.MuiButton-root {
+      background-color: $twitter-color;
+      border: none;
+      color: $white;
+      font-weight: 800;
+      text-transform: inherit;
+      border-radius: 30px;
+      height: 40px;
+
+      &:hover {
+        background-color: $twitter-color;
+        color: $white;
+      }
+    }
+
+    &.reverse {
+      &.MuiButton-root {
+        background-color: $white;
+        border: 1px solid $twitter-color;
+        color: $twitter-color;
+
+        &:hover {
+          background-color: $twitter-bgcolor;
+          color: $twitter-color;
+        }
+      }
+    }
+  }
+}
