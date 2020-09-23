@@ -1,13 +1,13 @@
 export const initialState = {
-  user: {
-    id: "44567889898",
-    displayName: "Jimi Hendrix",
-    occupation: "Musician",
-    username: "JimiHendrix",
-    verified: true,
-    avatar: "https://m.media-amazon.com/images/I/51qyXfsyjRL._AA256_.jpg",
-  },
-  // user: null
+  // user: {
+  //   id: "44567889898",
+  //   displayName: "Jimi Hendrix",
+  //   occupation: "Musician",
+  //   username: "JimiHendrix",
+  //   verified: true,
+  //   avatar: "https://m.media-amazon.com/images/I/51qyXfsyjRL._AA256_.jpg",
+  // },
+  user: null,
 };
 
 // Reducer is always jsut listening to dispatch

@@ -1,6 +1,9 @@
 import React from "react";
 import "./Sidebar.scss";
 
+// React Router
+import { Link, NavLink } from "react-router-dom";
+
 // ICONS
 import TwitterIcon from "@material-ui/icons/Twitter";
 import HomeIcon from "@material-ui/icons/Home";
@@ -23,24 +26,50 @@ const Sidebar = () => {
       <div className="sidebar__nav">
         <TwitterIcon Icon={HomeIcon} className="sidebar__twitterIcon" />
 
-        <SidebarOption active text="Home" Icon={HomeIcon} />
-        {/* <SidebarOption text="Explore" Icon={SearchIcon} /> */}
-        <SidebarOption text="Explore" Character={"#"} />
+        <NavLink to="/" activeClassName="active">
+          <SidebarOption text="Home" Icon={HomeIcon} />
+        </NavLink>
 
-        <SidebarOption
-          key="Notifications"
-          text="Notifications"
-          Icon={NotificationsNoneIcon}
-        />
-        <SidebarOption key="Messages" text="Messages" Icon={MailOutlineIcon} />
-        <SidebarOption
-          key="Bookmarks"
-          text="Bookmarks"
-          Icon={BookmarkBorderIcon}
-        />
-        <SidebarOption key="Lists" text="Lists" Icon={ListAltIcon} />
-        <SidebarOption key="Profile" text="Profile" Icon={PermIdentityIcon} />
-        <SidebarOption key="More" text="More" Icon={MoreHorizIcon} />
+        {/* <SidebarOption text="Explore" Icon={SearchIcon} /> */}
+        <NavLink to="/explore" activeClassName="active">
+          <SidebarOption text="Explore" Character={"#"} />
+        </NavLink>
+
+        <NavLink to="/notifications" activeClassName="active">
+          <SidebarOption
+            key="Notifications"
+            text="Notifications"
+            Icon={NotificationsNoneIcon}
+          />
+        </NavLink>
+
+        <NavLink to="/messages" activeClassName="active">
+          <SidebarOption
+            key="Messages"
+            text="Messages"
+            Icon={MailOutlineIcon}
+          />
+        </NavLink>
+
+        <NavLink to="/bookmarks" activeClassName="active">
+          <SidebarOption
+            key="Bookmarks"
+            text="Bookmarks"
+            Icon={BookmarkBorderIcon}
+          />
+        </NavLink>
+
+        <NavLink to="/lists" activeClassName="active">
+          <SidebarOption key="Lists" text="Lists" Icon={ListAltIcon} />
+        </NavLink>
+
+        <NavLink to="/profile" activeClassName="active">
+          <SidebarOption key="Profile" text="Profile" Icon={PermIdentityIcon} />
+        </NavLink>
+
+        <NavLink to="/more" activeClassName="active">
+          <SidebarOption key="More" text="More" Icon={MoreHorizIcon} />
+        </NavLink>
 
         {/* Button -> Tweet */}
         <Button

@@ -27,4 +27,8 @@
   &--active {
     color: $twitter-color;
   }
+
+  .active & {
+    color: $twitter-color;
+  }
 }
