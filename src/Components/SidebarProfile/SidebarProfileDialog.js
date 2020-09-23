@@ -1,18 +1,15 @@
 import React from "react";
 import "./SidebarProfileDialog.scss";
 
+import SidebarProfileBadge from "./SidebarProfileBadge";
+
 import Avatar from "@material-ui/core/Avatar";
 import AddIcon from "@material-ui/icons/Add";
-
 import Popover from "@material-ui/core/Popover";
-
-// import Dialog from "@material-ui/core/Dialog";
-// import DialogTitle from "@material-ui/core/DialogTitle";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import ListItemText from "@material-ui/core/ListItemText";
-import CheckIcon from "@material-ui/icons/Check";
 
 // React Context
 import { useStateValue } from "../../StateProvider";
@@ -50,25 +47,8 @@ const SidebarProfileDialog = ({ dialog, setDialog, anchorEl }) => {
       anchorEl={anchorEl}
       className="sidebarProfileDialog"
     >
-      <div className="title">
-        <div className="sidebarProfile">
-          <div className="sidebarProfile__avatar">
-            <Avatar
-              lassName="tweetBox__avatar"
-              alt={user.displayName}
-              src={user.avatar}
-            />
-          </div>
-
-          <div className="sidebarProfile__body">
-            <h3>
-              {user.displayName}
-              <span>@{user.username}</span>
-            </h3>
-          </div>
-
-          <CheckIcon className="sidebarProfile__dropDown color-blue" />
-        </div>
+      <div className="sidebarProfileDialog__title">
+        <SidebarProfileBadge user={user} icon="check" />
       </div>
       <List>
         <ListItem

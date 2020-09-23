@@ -1,18 +1,19 @@
 @import "../../style/base/colors";
 
 .sidebarProfileDialog {
-  .sidebarProfile {
-    margin-top: 0;
+  &__title {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+    padding: 15px;
+    position: relative;
   }
 
   .MuiList-root {
     & > * {
       border-top: 1px solid $twitter-bgcolor;
     }
-  }
-
-  .color-blue {
-    color: $twitter-color;
   }
 
   .MuiPopover-paper {

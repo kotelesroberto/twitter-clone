@@ -1,0 +1,37 @@
+@import "../../style/base/colors";
+
+.sidebarProfileBadge {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+
+  position: relative;
+
+  &__avatar {
+    margin-right: 10px;
+  }
+
+  &__dropDown {
+    z-index: 10;
+    cursor: pointer;
+    color: $grey;
+    margin-left: auto;
+
+    &.color-blue {
+      color: $twitter-color;
+    }
+  }
+
+  &__body {
+    & > h3 {
+      font-size: 15px;
+      span {
+        display: block;
+        font-weight: 400;
+        color: $twitter-grey;
+      }
+    }
+  }
+}

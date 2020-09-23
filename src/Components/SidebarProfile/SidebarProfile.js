@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import "./SidebarProfile.scss";
 
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import { Avatar, Button } from "@material-ui/core";
-
 import SidebarProfileDialog from "./SidebarProfileDialog";
 
 // React Context
 import { useStateValue } from "../../StateProvider";
+
+import SidebarProfileBadge from "./SidebarProfileBadge";
 
 const SidebarProfile = () => {
   // context data
@@ -24,22 +23,7 @@ const SidebarProfile = () => {
         setDialog(!dialog);
       }}
     >
-      <div className="sidebarProfile__avatar">
-        <Avatar
-          lassName="tweetBox__avatar"
-          alt={user.displayName}
-          src={user.avatar}
-        />
-      </div>
-
-      <div className="sidebarProfile__body">
-        <h3>
-          {user.displayName}
-          <span>@{user.username}</span>
-        </h3>
-      </div>
-
-      <ExpandMoreIcon className="sidebarProfile__dropDown" />
+      <SidebarProfileBadge user={user} icon="expand" />
 
       <SidebarProfileDialog
         dialog={dialog}
