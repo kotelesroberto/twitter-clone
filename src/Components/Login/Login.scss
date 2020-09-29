@@ -6,6 +6,13 @@
   margin-right: auto;
   max-width: 600px;
   width: 100%;
+  padding: 0 15px;
+
+  &__error {
+    color: $red;
+    margin-bottom: 15px;
+    text-align: center;
+  }
 
   &__twitterIcon {
     color: $twitter-color;
@@ -29,6 +36,9 @@
   & > form {
     display: flex;
     flex-direction: column;
+    max-width: 380px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   &__label {
@@ -42,6 +52,7 @@
     border-bottom: 2px solid #647785;
     background-color: #f5f8fa;
     margin-bottom: 20px;
+    outline: none;
   }
 
   &__footer {

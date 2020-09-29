@@ -10,40 +10,80 @@ import { Link, NavLink, useHistory } from "react-router-dom";
 // React Context
 import { useStateValue } from "../../StateProvider";
 
+import { auth } from "../../firebase/firebase";
+
 const Login = () => {
   // context data
   const [{ user, loginScreenType }, dispatch] = useStateValue();
 
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("test123@test.com");
+  const [password, setPassword] = useState("Test123!");
+  const [error, setError] = useState("");
 
   const history = useHistory(); // it allows us to programmatically change the url (after login for example)
 
   const doLogin = (e) => {
     e.preventDefault();
 
-    dispatch({
-      type: "SET_USER",
-      user: {
-        id: "44567889898",
-        displayName: "Jimi Hendrix",
-        occupation: "Musician",
-        username: "JimiHendrix",
-        verified: true,
-        avatar: "https://m.media-amazon.com/images/I/51qyXfsyjRL._AA256_.jpg",
-      },
-    });
+    // some fancy firebase login stuff
+    auth
+      .signInWithEmailAndPassword(username, password)
+      .then((auth) => {
+        // it successfully logged in with email and password
+        console.log(auth);
+        if (auth) {
+          history.push("/home"); // redirect to homepage
+        }
+      })
+      .catch((error) => alert(error.message));
 
-    dispatch({
-      type: "SET_LOGINSCREEN",
-      loginScreenType: "landing",
-    });
+    // dispatch({
+    //   type: "SET_USER",
+    //   user: {
+    //     id: "44567889898",
+    //     displayName: "Jimi Hendrix",
+    //     occupation: "Musician",
+    //     username: "JimiHendrix",
+    //     verified: true,
+    //     avatar: "https://m.media-amazon.com/images/I/51qyXfsyjRL._AA256_.jpg",
+    //   },
+    // });
 
-    history.replace("/home");
+    // dispatch({
+    //   type: "SET_LOGINSCREEN",
+    //   loginScreenType: "landing",
+    // });
+
+    // history.replace("/home");
   };
 
   const handleForgotPassword = (e) => {};
-  const handleSignup = (e) => {};
+
+  const handleSignup = (e) => {
+    e.preventDefault();
+    // do some fancy Firebase register stuff
+    auth
+      .createUserWithEmailAndPassword(username, password)
+      .then((auth) => {
+        setError("");
+
+        // it successfully created a new user with email and password
+        console.log(auth);
+        if (auth) {
+          history.push("/"); // redirect to homepage
+        }
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        if (error.code === "auth/weak-password") {
+          // alert("The password is too weak.");
+          setError("The password is too weak.");
+        } else {
+          setError(error.message);
+        }
+        console.log(error);
+      });
+  };
 
   return (
     <div className="login">
@@ -53,9 +93,11 @@ const Login = () => {
 
       <h2>Log in to Twitter</h2>
 
+      {error && <p className="login__error">{error}</p>}
+
       <form action="">
         <label htmlFor="username" className="login__label">
-          Phone, email, or username
+          Phone, email, or username ()
         </label>
         <input
           className="login__input"

@@ -1,0 +1,20 @@
+[debug] [2020-09-29T17:15:59.265Z] ----------------------------------------------------------------------
+[debug] [2020-09-29T17:15:59.267Z] Command:       /Users/robert/.nvm/versions/node/v14.9.0/bin/node /Users/robert/.nvm/versions/node/v14.9.0/bin/firebase deploy
+[debug] [2020-09-29T17:15:59.267Z] CLI Version:   8.10.0
+[debug] [2020-09-29T17:15:59.267Z] Platform:      darwin
+[debug] [2020-09-29T17:15:59.267Z] Node Version:  v14.9.0
+[debug] [2020-09-29T17:15:59.268Z] Time:          Tue Sep 29 2020 18:15:59 GMT+0100 (British Summer Time)
+[debug] [2020-09-29T17:15:59.268Z] ----------------------------------------------------------------------
+[debug] [2020-09-29T17:15:59.268Z] 
+[debug] [2020-09-29T17:15:59.275Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-09-29T17:15:59.276Z] > authorizing via signed-in user
+[debug] [2020-09-29T17:15:59.276Z] [iam] checking project twitter-clone-2c06b for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2020-09-29T17:15:59.278Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2020-09-29T17:15:59.278Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2020-09-29T17:15:59.480Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 29 Sep 2020 17:15:59 GMT","server":"scaffolding on HTTPServer2","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-27=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-09-29T17:15:59.493Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/twitter-clone-2c06b:testIamPermissions  
+ {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2020-09-29T17:16:00.272Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 29 Sep 2020 17:16:00 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=620","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-27=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-09-29T17:16:00.274Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/twitter-clone-2c06b  
+ 

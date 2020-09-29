@@ -14,20 +14,29 @@ import ListItemText from "@material-ui/core/ListItemText";
 // React Context
 import { useStateValue } from "../../StateProvider";
 
+import { auth } from "../../firebase/firebase";
+
 const SidebarProfileDialog = ({ dialog, setDialog, anchorEl }) => {
   // context data
   const [{ user }, dispatch] = useStateValue();
 
   const handleClose = () => {
+    if (user) {
+      auth.signOut();
+    }
     setDialog(false);
   };
 
   const handleListItemClick = (act) => {
     if (act === "logout") {
-      dispatch({
-        type: "SET_USER",
-        user: null,
-      });
+      if (user) {
+        auth.signOut();
+      }
+
+      // dispatch({
+      //   type: "SET_USER",
+      //   user: null,
+      // });
     } else if (act === "addAccount") {
       // TODO
     }

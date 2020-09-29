@@ -69,7 +69,7 @@ const LoginScreen = () => {
             <p>Join Twitter today.</p>
 
             <Button
-              key="TweetButton"
+              key="SignUpButton"
               variant="outlined"
               className="loginScreen__button"
               fullWidth
@@ -79,7 +79,7 @@ const LoginScreen = () => {
             </Button>
 
             <Button
-              key="TweetButton"
+              key="LogInButton"
               variant="outlined"
               className="loginScreen__button reverse"
               fullWidth

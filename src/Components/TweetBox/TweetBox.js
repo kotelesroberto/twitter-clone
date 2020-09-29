@@ -34,7 +34,7 @@ const TweetBox = () => {
       text: tweetMsg,
       image: tweetMsgImg,
       imageAlt: "",
-      avatar: user.avatar,
+      avatar: user.photoURL,
       comments: "",
       numComments: Math.floor(Math.random() * 1000) + 1,
       retweets: Math.floor(Math.random() * 1000) + 1,
@@ -53,8 +53,8 @@ const TweetBox = () => {
         <div className="tweetBox__input">
           <Avatar
             className="tweetBox__avatar"
-            alt={user.dispatch}
-            src={user.avatar}
+            alt={user.username}
+            src={user.photoURL}
           />
           <input
             type="text"
