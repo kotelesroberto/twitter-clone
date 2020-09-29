@@ -26,7 +26,7 @@ const SidebarProfileBadge = ({ user, icon }) => {
     <div className="sidebarProfileBadge">
       <div className="sidebarProfileBadge__avatar">
         <Avatar
-          lassName="tweetBox__avatar"
+          className="tweetBox__avatar"
           alt={user.displayName}
           src={user.avatar}
         />

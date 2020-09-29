@@ -1,7 +1,18 @@
 @import "../../style/base/colors";
+@import "../../style/utilities/breakpoints";
 
 .widgets {
-  flex: 0.3;
+  flex: 0;
+  content-visibility: hidden;
+
+  @media screen and (min-width: $screen-smamed) {
+    content-visibility: visible;
+    flex: 0.1;
+  }
+
+  @media screen and (min-width: $screen-large) {
+    flex: 0.3;
+  }
 
   &__input {
     display: flex;

@@ -10,6 +10,8 @@ import {
 } from "react-twitter-embed";
 
 const Widgets = () => {
+  "use strict";
+
   return (
     <div className="widgets">
       <div className="widgets__input">
@@ -20,7 +22,7 @@ const Widgets = () => {
       {/* Embed Twitter stuffs */}
       <div className="widgets__widgetContainer">
         <h2>What's happening</h2>
-        <TwitterTweetEmbed tweetId={"1273727663123898371"} />
+        <TwitterTweetEmbed tweetId="1273727663123898371" />
 
         <TwitterTimelineEmbed
           sourceType="profile"
@@ -29,7 +31,7 @@ const Widgets = () => {
         />
 
         <TwitterShareButton
-          url={"https://www.facebook.com/JimiHendrix"}
+          url="https://www.facebook.com/JimiHendrix"
           options={{
             text:
               "𝙿𝙾𝚆𝙴𝚁 𝚝𝚘 𝚝𝚑𝚎 𝚙𝚎𝚘𝚙𝚕𝚎 / 𝙵𝚁𝙴𝙴𝙳𝙾𝙼 𝚘𝚏 𝚝𝚑𝚎 𝚜𝚘𝚞𝚕 / 𝙿𝙰𝚂𝚂 𝙸𝚃 𝙾𝙽 𝚝𝚘 𝚝𝚑𝚎 𝚢𝚘𝚞𝚗𝚐 𝚊𝚗𝚍 𝚘𝚕𝚍",

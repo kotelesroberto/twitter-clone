@@ -38,7 +38,7 @@ const Post = forwardRef(
       <article className="post" ref={ref}>
         <ExpandMoreIcon className="post__dropDown" />
         <div className="post__avatar">
-          <Avatar lassName="tweetBox__avatar" alt="" src={avatar} />
+          <Avatar className="tweetBox__avatar" alt="" src={avatar} />
         </div>
         <div className="post__body">
           <div className="post__header">

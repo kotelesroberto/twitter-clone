@@ -52,7 +52,7 @@ const TweetBox = () => {
       <form action="">
         <div className="tweetBox__input">
           <Avatar
-            lassName="tweetBox__avatar"
+            className="tweetBox__avatar"
             alt={user.dispatch}
             src={user.avatar}
           />

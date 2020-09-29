@@ -5,9 +5,10 @@ import "./Sidebar.scss";
 import { Link, NavLink } from "react-router-dom";
 
 // ICONS
+// import twitterBG from "./public/assets/twitterBG.svg";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import HomeIcon from "@material-ui/icons/Home";
-// import SearchIcon from "@material-ui/icons/Search";
+import SearchIcon from "@material-ui/icons/Search";
 import NotificationsNoneIcon from "@material-ui/icons/NotificationsNone";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import BookmarkBorderIcon from "@material-ui/icons/BookmarkBorder";
@@ -30,9 +31,9 @@ const Sidebar = () => {
           <SidebarOption text="Home" Icon={HomeIcon} />
         </NavLink>
 
-        {/* <SidebarOption text="Explore" Icon={SearchIcon} /> */}
         <NavLink to="/explore" activeClassName="active">
-          <SidebarOption text="Explore" Character={"#"} />
+          <SidebarOption text="Explore" Icon={SearchIcon} />
+          {/* <SidebarOption text="Explore" Character={"#"} /> */}
         </NavLink>
 
         <NavLink to="/notifications" activeClassName="active">
@@ -72,14 +73,21 @@ const Sidebar = () => {
         </NavLink>
 
         {/* Button -> Tweet */}
-        <Button
-          key="TweetButton"
-          variant="outlined"
-          className="sidebar__tweetButton"
-          fullWidth
-        >
-          Tweet
-        </Button>
+        <NavLink to="/" activeClassName="active">
+          <Button
+            key="TweetButton"
+            variant="outlined"
+            className="sidebar__tweetButton"
+            fullWidth
+          >
+            <img
+              src={process.env.PUBLIC_URL + "/assets/tweet-mobile.svg"}
+              alt="Tweet"
+              className="sidebar__tweetButtonImg"
+            />
+            <span>Tweet</span>
+          </Button>
+        </NavLink>
       </div>
 
       <SidebarProfile />

@@ -1,4 +1,5 @@
 @import "../../style/base/colors";
+@import "../../style/utilities/breakpoints";
 
 .sidebarProfileBadge {
   flex: 1;
@@ -10,21 +11,37 @@
   position: relative;
 
   &__avatar {
-    margin-right: 10px;
+    @media screen and (min-width: $screen-large) {
+      margin-right: 10px;
+    }
   }
 
   &__dropDown {
-    z-index: 10;
-    cursor: pointer;
-    color: $grey;
-    margin-left: auto;
+    &.MuiSvgIcon-root {
+      z-index: 10;
+      cursor: pointer;
+      color: $grey;
+      margin-left: auto;
+      display: none;
 
-    &.color-blue {
-      color: $twitter-color;
+      @media screen and (min-width: $screen-large) {
+        // content-visibility: visible;
+        display: flex;
+      }
+
+      &.color-blue {
+        color: $twitter-color;
+      }
     }
   }
 
   &__body {
+    content-visibility: hidden;
+
+    @media screen and (min-width: $screen-large) {
+      content-visibility: visible;
+    }
+
     & > h3 {
       font-size: 15px;
       span {
