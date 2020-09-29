@@ -1,7 +1,7 @@
 @import "../../style/base/colors";
 
 .loginScreenFooter {
-  height: 50px;
+  // height: 50px;
 
   nav {
     display: flex;
@@ -9,11 +9,13 @@
     align-items: center;
     justify-content: center;
     height: 100%;
+    flex-wrap: wrap;
+    padding: 10px 0;
   }
 
   a,
   span {
-    padding: 0 5px;
+    padding: 5px 5px;
     font-size: 13px;
     color: $grey;
     text-decoration: none;

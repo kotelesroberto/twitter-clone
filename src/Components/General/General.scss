@@ -1,10 +1,29 @@
 @import "../../style/base/colors";
+@import "../../style/utilities/breakpoints";
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.general::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.general {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
 
 .general {
-  flex: 0.4;
   border-right: 1px solid $twitter-bgcolor;
   // min-width: fit-content;
   overflow-y: scroll;
+  flex: 1;
+
+  @media screen and (min-width: $screen-smamed) {
+  }
+
+  @media screen and (min-width: $screen-large) {
+    flex: 0.4;
+  }
 
   &__header {
     position: sticky;
@@ -18,5 +37,9 @@
   & > h2 {
     font-size: 20px;
     font-weight: 700;
+  }
+
+  &__body {
+    padding: 10px;
   }
 }

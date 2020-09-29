@@ -1,4 +1,5 @@
 @import "../../style/base/colors";
+@import "../../style/utilities/breakpoints";
 
 .loginScreen {
   display: flex;
@@ -7,9 +8,14 @@
 
   &__header {
     display: flex;
-    flex-direction: row;
+    flex-direction: column-reverse;
     width: 100%;
-    height: calc(100vh - 50px);
+    // height: calc(100vh - 50px);
+    flex: 1;
+
+    @media screen and (min-width: $screen-tablet-portrait) {
+      flex-direction: row;
+    }
   }
 
   &__col {
@@ -20,6 +26,7 @@
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    padding: 10px;
   }
   &__left {
   }
@@ -36,11 +43,17 @@
     position: absolute;
     top: 50%;
     right: 0;
-    width: auto;
-    height: 150vh;
+    width: 100vw;
+    height: auto;
+
     object-fit: cover;
     transform: translate(30%, -50%);
     z-index: 1;
+
+    @media screen and (min-width: $screen-tablet-portrait) {
+      width: auto;
+      height: 150vh;
+    }
   }
 
   &__introItem {
