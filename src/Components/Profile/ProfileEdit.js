@@ -28,6 +28,29 @@ const ProfileEdit = ({ editOpen, setEditOpen }) => {
   const [website, setWebsite] = useState(user.website);
   const [birthday, setBirthday] = useState(user.birthday);
 
+  const handleChange_Field = (id, value) => {
+    switch (id) {
+      case "name":
+        setName(value);
+        break;
+      case "bio":
+        setName(setBio);
+        break;
+      case "location":
+        setName(setLocation);
+        break;
+      case "website":
+        setName(setWebsite);
+        break;
+      case "birthday":
+        setName(setBirthday);
+        break;
+    }
+    // console.log("id", id);
+    // console.log("val", value);
+    // e.target.value;
+  };
+
   const saveProfile = () => {
     const userFirebase = auth.currentUser;
     const newPhotoURL =
@@ -131,6 +154,9 @@ const ProfileEdit = ({ editOpen, setEditOpen }) => {
           type="text"
           fullWidth
           value={name}
+          onChange={(e) => {
+            handleChange_Field(e.target.id, e.target.value);
+          }}
         />
       </DialogContent>
       <DialogContent>
@@ -148,6 +174,9 @@ const ProfileEdit = ({ editOpen, setEditOpen }) => {
           fullWidth
           className="profileEdit__textarea"
           value={bio}
+          onChange={(e) => {
+            handleChange_Field(e.target.id, e.target.value);
+          }}
         />
       </DialogContent>
       <DialogContent>
@@ -163,6 +192,9 @@ const ProfileEdit = ({ editOpen, setEditOpen }) => {
           type="text"
           fullWidth
           value={location}
+          onChange={(e) => {
+            handleChange_Field(e.target.id, e.target.value);
+          }}
         />
       </DialogContent>
       <DialogContent>
@@ -178,6 +210,9 @@ const ProfileEdit = ({ editOpen, setEditOpen }) => {
           type="text"
           fullWidth
           value={website}
+          onChange={(e) => {
+            handleChange_Field(e.target.id, e.target.value);
+          }}
         />
       </DialogContent>
       <DialogContent>
@@ -193,6 +228,9 @@ const ProfileEdit = ({ editOpen, setEditOpen }) => {
           type="text"
           fullWidth
           value={birthday}
+          onChange={(e) => {
+            handleChange_Field(e.target.id, e.target.value);
+          }}
         />
       </DialogContent>
     </Dialog>
