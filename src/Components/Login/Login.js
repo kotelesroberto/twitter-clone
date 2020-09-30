@@ -107,11 +107,19 @@ const Login = () => {
       });
   };
 
-  const handleSignup = (e) => {
+  const gotoSignup = (e) => {
     e.preventDefault();
     dispatch({
       type: "SET_LOGINSCREEN",
       loginScreenType: "signup",
+    });
+  };
+
+  const gotoLogin = (e) => {
+    e.preventDefault();
+    dispatch({
+      type: "SET_LOGINSCREEN",
+      loginScreenType: "login",
     });
   };
 
@@ -237,6 +245,18 @@ const Login = () => {
           </Button>
         )}
 
+        {loginScreenType === "signup" && (
+          <ul className="login__footer">
+            <li
+              onClick={(e) => {
+                gotoLogin(e);
+              }}
+            >
+              Log in to Twitter
+            </li>
+          </ul>
+        )}
+
         {loginScreenType === "login" && (
           <ul className="login__footer">
             <li
@@ -248,7 +268,7 @@ const Login = () => {
             </li>
             <li
               onClick={(e) => {
-                handleSignup(e);
+                gotoSignup(e);
               }}
             >
               Sign up for Twitter
