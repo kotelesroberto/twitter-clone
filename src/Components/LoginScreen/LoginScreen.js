@@ -71,7 +71,10 @@ const LoginScreen = () => {
         <div className="loginScreen__col loginScreen__right">
           <div className="loginScreen__loginPanel">
             <TwitterIcon fontSize="large" className="loginScreen__icon" />
-            <h2>See what’s happening in the world right now</h2>
+            <h2>
+              Demo by Robert Koteles. See what’s happening in the world right
+              now
+            </h2>
 
             <p>Join Twitter today.</p>
 

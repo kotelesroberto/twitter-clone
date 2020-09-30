@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Widgets.scss";
 
 import SearchIcon from "@material-ui/icons/Search";
+
+import SearchDialog from "./SearchDialog";
 
 import {
   TwitterTimelineEmbed,
@@ -12,11 +14,29 @@ import {
 const Widgets = () => {
   "use strict";
 
+  const [dialog, setDialog] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(false);
+
   return (
     <div className="widgets">
       <div className="widgets__input">
         <SearchIcon className="widgets__searchIcon" />
-        <input type="text" className="" placeholder="Search Twitter" />
+        <input
+          type="text"
+          className=""
+          placeholder="Search Twitter"
+          onClick={(e) => {
+            setAnchorEl(e.currentTarget);
+            setDialog(!dialog);
+          }}
+        />
+
+        <SearchDialog
+          dialog={dialog}
+          setDialog={setDialog}
+          anchorEl={anchorEl}
+          setAnchorEl={setAnchorEl}
+        />
       </div>
 
       {/* Embed Twitter stuffs */}

@@ -67,7 +67,7 @@ const SidebarProfileDialog = ({ dialog, setDialog, anchorEl }) => {
               <AddIcon />
             </Avatar>
           </ListItemAvatar>
-          <ListItemText primary="Add an existing account" />
+          <ListItemText primary="Add an existing account (demo)" />
         </ListItem>
 
         <ListItem
