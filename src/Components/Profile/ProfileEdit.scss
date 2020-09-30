@@ -1,10 +1,15 @@
 @import "../../style/base/colors";
+@import "../../style/utilities/breakpoints";
 
 .profileEdit {
   .MuiDialog-paper {
     width: 100%;
     max-width: 70vw;
     border-radius: 15px;
+
+    @media screen and (min-width: $screen-smamed) {
+      max-width: 600px;
+    }
   }
 
   .MuiDialogActions-root {

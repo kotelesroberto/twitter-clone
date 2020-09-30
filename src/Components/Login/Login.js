@@ -37,25 +37,6 @@ const Login = () => {
         }
       })
       .catch((error) => setError(error.message));
-
-    // dispatch({
-    //   type: "SET_USER",
-    //   user: {
-    //     id: "44567889898",
-    //     displayName: "Jimi Hendrix",
-    //     occupation: "Musician",
-    //     username: "JimiHendrix",
-    //     verified: true,
-    //     avatar: "https://m.media-amazon.com/images/I/51qyXfsyjRL._AA256_.jpg",
-    //   },
-    // });
-
-    // dispatch({
-    //   type: "SET_LOGINSCREEN",
-    //   loginScreenType: "landing",
-    // });
-
-    // history.replace("/home");
   };
 
   const doSignup = (e) => {
@@ -83,6 +64,9 @@ const Login = () => {
               location: "",
               website: "",
               birthday: "",
+              following: Math.floor(Math.random() * 1000) + 1,
+              followers: Math.floor(Math.random() * 1000) + 1,
+              verified: true,
             })
             .then(() => {
               console.log("Document successfully written!");

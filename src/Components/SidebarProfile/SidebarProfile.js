@@ -29,6 +29,7 @@ const SidebarProfile = () => {
         dialog={dialog}
         setDialog={setDialog}
         anchorEl={anchorEl}
+        setAnchorEl={setAnchorEl}
       />
     </div>
   );

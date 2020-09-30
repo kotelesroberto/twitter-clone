@@ -44,6 +44,9 @@ function App() {
               tempAuthUser.teaserImage = docData.teaserImage;
               tempAuthUser.location = docData.location;
               tempAuthUser.bio = docData.bio;
+              tempAuthUser.verified = docData.verified;
+              tempAuthUser.following = docData.following;
+              tempAuthUser.followers = docData.followers;
 
               dispatch({
                 type: "SET_USER",

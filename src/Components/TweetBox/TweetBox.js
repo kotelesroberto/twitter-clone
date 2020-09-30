@@ -8,7 +8,6 @@ import EqualizerIcon from "@material-ui/icons/Equalizer";
 import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
 import ScheduleIcon from "@material-ui/icons/Schedule";
 import { db } from "../../firebase/firebase";
-
 import { Avatar, Button } from "@material-ui/core";
 
 // React Context
@@ -50,6 +49,10 @@ const TweetBox = () => {
     setTweetMsgImg("");
   };
 
+  const showDemoMessage = () => {
+    alert("This is just a demo app!");
+  };
+
   return (
     <div className="tweetBox">
       <form action="">
@@ -76,11 +79,11 @@ const TweetBox = () => {
 
         <div className="tweetBox__footer">
           <div className="tweetBox__footerIcons">
-            <CropOriginalIcon />
-            <GifIcon />
-            <EqualizerIcon />
-            <InsertEmoticonIcon />
-            <ScheduleIcon />
+            <CropOriginalIcon onClick={showDemoMessage} />
+            <GifIcon onClick={showDemoMessage} />
+            <EqualizerIcon onClick={showDemoMessage} />
+            <InsertEmoticonIcon onClick={showDemoMessage} />
+            <ScheduleIcon onClick={showDemoMessage} />
           </div>
           <Button
             type="button"

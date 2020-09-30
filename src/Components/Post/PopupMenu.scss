@@ -1,0 +1,37 @@
+@import "../../style/base/colors";
+
+.popupMenu {
+  &__title {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+    padding: 15px;
+    position: relative;
+  }
+
+  .MuiList-root {
+    & > * {
+    }
+  }
+
+  .MuiPopover-paper {
+    border-radius: 15px;
+    overflow: visible;
+
+    &:after {
+      content: "";
+      display: block;
+      width: 15px;
+      height: 15px;
+      background-color: $white;
+      position: absolute;
+      left: 50%;
+      bottom: -8px;
+      box-shadow: 4px 0px 4px -3px rgba(0, 0, 40, 0.5),
+        3px 4px 4px -4px rgba(0, 0, 0, 0.5);
+      transform: rotate(45deg);
+      z-index: 0;
+    }
+  }
+}

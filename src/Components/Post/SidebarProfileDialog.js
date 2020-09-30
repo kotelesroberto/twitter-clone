@@ -1,8 +1,6 @@
 import React from "react";
 import "./SidebarProfileDialog.scss";
 
-import SidebarProfileBadge from "./SidebarProfileBadge";
-
 import Avatar from "@material-ui/core/Avatar";
 import AddIcon from "@material-ui/icons/Add";
 import Popover from "@material-ui/core/Popover";
@@ -16,7 +14,7 @@ import { useStateValue } from "../../StateProvider";
 
 import { auth } from "../../firebase/firebase";
 
-const SidebarProfileDialog = ({ dialog, setDialog, anchorEl, setAnchorEl }) => {
+const SidebarProfileDialog = ({ dialog, anchorEl }) => {
   // context data
   const [{ user }, dispatch] = useStateValue();
 
@@ -39,11 +37,6 @@ const SidebarProfileDialog = ({ dialog, setDialog, anchorEl, setAnchorEl }) => {
     }
   };
 
-  const handleClose = () => {
-    setAnchorEl(null);
-    setDialog(!dialog);
-  };
-
   return (
     <Popover
       anchorOrigin={{
@@ -55,13 +48,10 @@ const SidebarProfileDialog = ({ dialog, setDialog, anchorEl, setAnchorEl }) => {
         horizontal: "center",
       }}
       open={dialog}
-      onClose={handleClose}
       anchorEl={anchorEl}
       className="sidebarProfileDialog"
     >
-      <div className="sidebarProfileDialog__title">
-        <SidebarProfileBadge user={user} icon="check" />
-      </div>
+      <div className="sidebarProfileDialog__title"></div>
       <List>
         <ListItem
           autoFocus

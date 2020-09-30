@@ -1,9 +1,10 @@
-import React, { forwardRef } from "react";
+import React, { forwardRef, useState } from "react";
 import "./Post.scss";
 
 import Moment from "react-moment";
 import "moment-timezone";
 
+// icons
 import { Avatar } from "@material-ui/core";
 import VerifiedUserIcon from "@material-ui/icons/VerifiedUser";
 import ChatBubbleOutlineIcon from "@material-ui/icons/ChatBubbleOutline";
@@ -12,6 +13,8 @@ import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import PublishIcon from "@material-ui/icons/Publish";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
+// popup components
+import PopupMenu from "./PopupMenu";
 // for React flip move animation we have to use forwardRef wrapping!
 
 const Post = forwardRef(
@@ -34,6 +37,11 @@ const Post = forwardRef(
     },
     ref
   ) => {
+    const [dialog, setDialog] = useState(false);
+    const [anchorEl, setAnchorEl] = useState(false);
+
+    const [menuitems, setMenuitems] = useState([]);
+
     return (
       <article className="post" ref={ref}>
         <ExpandMoreIcon className="post__dropDown" />
@@ -67,7 +75,25 @@ const Post = forwardRef(
               {numComments && <span>{numComments}</span>}
             </div>
             <div>
-              <RepeatIcon fontSize="small" />{" "}
+              <RepeatIcon
+                fontSize="small"
+                onClick={(e) => {
+                  setMenuitems([
+                    {
+                      text: "Retweet",
+                      link: "",
+                      icon: "RepeatIcon",
+                    },
+                    {
+                      text: "Quote Tweet",
+                      link: "",
+                      icon: "CreateIcon",
+                    },
+                  ]);
+                  setAnchorEl(e.currentTarget);
+                  setDialog(!dialog);
+                }}
+              />{" "}
               {retweets && <span>{retweets}</span>}
             </div>
             <div>
@@ -75,10 +101,42 @@ const Post = forwardRef(
               {likes && <span>{likes}</span>}
             </div>
             <div>
-              <PublishIcon fontSize="small" /> {share && <span>{share}</span>}
+              <PublishIcon
+                fontSize="small"
+                onClick={(e) => {
+                  setMenuitems([
+                    {
+                      text: "Send via Direct Message",
+                      link: "",
+                      icon: "MailOutlineIcon",
+                    },
+                    {
+                      text: "Add Tweet to Bookmarks",
+                      link: "",
+                      icon: "BookmarkBorderIcon",
+                    },
+                    {
+                      text: "Copy link to Tweet",
+                      link: "",
+                      icon: "LinkIcon",
+                    },
+                  ]);
+                  setAnchorEl(e.currentTarget);
+                  setDialog(!dialog);
+                }}
+              />{" "}
+              {share && <span>{share}</span>}
             </div>
           </div>
         </div>
+
+        <PopupMenu
+          dialog={dialog}
+          setDialog={setDialog}
+          anchorEl={anchorEl}
+          setAnchorEl={setAnchorEl}
+          menuitems={menuitems}
+        />
       </article>
     );
   }
