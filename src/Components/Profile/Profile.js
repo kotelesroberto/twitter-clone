@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import "./Profile.scss";
 
+// custom components
 import ProfileTabEntry from "./ProfileTabEntry";
+import ProfileEdit from "./ProfileEdit";
 
 // icons
 import { Avatar, Button } from "@material-ui/core";
@@ -10,73 +12,37 @@ import DateRangeIcon from "@material-ui/icons/DateRange";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 
+// time management
 import Moment from "react-moment";
 import "moment-timezone";
 
+// firebase
 import { db, auth } from "../../firebase/firebase";
 
 // React Context
 import { useStateValue } from "../../StateProvider";
 
 // React Router
-import { Link, NavLink, useHistory } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Profile = () => {
   // context data
   const [{ user }, dispatch] = useStateValue();
 
+  // edit profile
+  const [editOpen, setEditOpen] = useState(false);
+  const openEditDialog = (e) => {
+    e.preventDefault();
+    setEditOpen(true);
+  };
+  const handleEditClose = () => {
+    setEditOpen(false);
+  };
+
   // tabs
   const [tab, setTab] = useState(0);
   const handleTabChange = (event, newValue) => {
     setTab(newValue);
-  };
-
-  const setupProfile = (e) => {
-    e.preventDefault();
-  };
-
-  const saveProfile = () => {
-    const userFirebase = auth.currentUser;
-    const newDisplayName = "Jimi Hendrixxx";
-    const newPhotoURL =
-      "https://images-na.ssl-images-amazon.com/images/I/71%2BwSVmufAL._AC_SL1200_.jpg";
-    const newTeaserImage =
-      "https://i.cbc.ca/1.5245615.1565722610!/fileImage/httpImage/image.jpg_gen/derivatives/16x9_940/woodstock.jpg";
-    const bio = "This is a lorem ipsum bio";
-    const location = "New York";
-    const website = "";
-    const birthday = "";
-
-    // save extra data into Firebase database
-    db.collection("users")
-      .doc(userFirebase.uid)
-      .update({
-        displayName: newDisplayName,
-        photoURL: newPhotoURL,
-        teaserImage: newTeaserImage,
-        bio: bio,
-        location: location,
-        website: website,
-        birthday: birthday,
-      })
-      .then(() => {
-        console.log("Document successfully written!");
-
-        let tempUser = { ...user };
-        tempUser.displayName = newDisplayName;
-        tempUser.photoURL = newPhotoURL;
-
-        console.log("tempUser >>>", tempUser);
-
-        dispatch({
-          type: "SET_USER",
-          user: tempUser,
-        });
-      })
-      .catch(function (error) {
-        // An error happened.
-        console.log("error >>>", error);
-      });
   };
 
   const saveNewPassword = () => {
@@ -119,10 +85,12 @@ const Profile = () => {
             type="button"
             variant="outlined"
             className="profile__button button button--outline"
-            onClick={saveProfile}
+            onClick={openEditDialog}
           >
             Edit profile
           </Button>
+
+          <ProfileEdit editOpen={editOpen} setEditOpen={setEditOpen} />
         </div>
         <h3>
           {user.displayName} <span>@{user.username}</span>
@@ -220,12 +188,7 @@ const Profile = () => {
             </p>
 
             <NavLink to="/home" activeClassName="active">
-              <Button
-                type="button"
-                variant="outlined"
-                className="button"
-                // onClick={saveProfile}
-              >
+              <Button type="button" variant="outlined" className="button">
                 Tweet a photo or video
               </Button>
             </NavLink>

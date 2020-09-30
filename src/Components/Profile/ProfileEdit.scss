@@ -1,0 +1,56 @@
+@import "../../style/base/colors";
+
+.profileEdit {
+  .MuiDialog-paper {
+    width: 100%;
+    max-width: 70vw;
+  }
+
+  .MuiDialogActions-root {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .MuiDialogContent-root {
+    background-color: $twitter-bgcolor;
+    padding: 5px;
+    margin: 10px;
+    border-bottom: 1px solid $grey;
+  }
+  .MuiDialogTitle-root {
+    padding: 5px;
+    h2 {
+      font-weight: 800;
+    }
+  }
+  .MuiFormLabel-root {
+    font-size: 12px;
+  }
+
+  .MuiInputBase-input {
+    border: 0;
+    background-color: transparent;
+  }
+
+  .MuiInput-underline {
+    &:before,
+    &:after {
+      display: none;
+    }
+  }
+
+  &__close {
+  }
+  &__save {
+    &.MuiButtonBase-root {
+      margin-left: auto !important;
+    }
+  }
+
+  &__textarea {
+    background-color: transparent;
+    border: 0;
+    resize: none;
+  }
+}
