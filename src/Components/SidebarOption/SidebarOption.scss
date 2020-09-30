@@ -35,9 +35,11 @@
   }
   &--demo {
     &:after {
-      content: "demo";
-      font-style: italic;
-      font-size: 10px;
+      @media screen and (min-width: $screen-large) {
+        content: "demo";
+        font-style: italic;
+        font-size: 10px;
+      }
     }
   }
 

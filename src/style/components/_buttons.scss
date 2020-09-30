@@ -1,17 +1,6 @@
 .button {
   cursor: pointer;
 
-  &:hover {
-  }
-
-  &.disabled,
-  &:disabled {
-    pointer-events: none;
-    opacity: 0.5;
-  }
-}
-
-.button {
   &.MuiButton-root {
     background-color: $twitter-color;
     border: none;
@@ -20,6 +9,12 @@
     text-transform: inherit;
     border-radius: 30px;
     height: 40px;
+
+    &.Mui-disabled {
+      pointer-events: none;
+      opacity: 0.5;
+      color: $white;
+    }
 
     &:hover {
       background-color: $twitter-color;

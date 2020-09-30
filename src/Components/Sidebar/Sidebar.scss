@@ -19,6 +19,9 @@
   flex-direction: column;
   justify-content: space-between;
   overflow-y: auto;
+  height: 100vh;
+  position: sticky;
+  top: 0;
 
   @media screen and (min-width: $screen-large) {
     min-width: 250px;

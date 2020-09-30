@@ -25,6 +25,9 @@ const TweetBox = () => {
   const sendTweet = (e) => {
     e.preventDefault();
 
+    if (!tweetMsg) {
+      return;
+    }
     // save into Firebase database
     db.collection("tweets").add({
       displayName: user.displayName,
@@ -84,6 +87,7 @@ const TweetBox = () => {
             variant="outlined"
             className="tweetBox__tweetButton button"
             onClick={sendTweet}
+            disabled={tweetMsg ? false : true}
           >
             Tweet
           </Button>
