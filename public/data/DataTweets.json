@@ -1,0 +1,23 @@
+[
+  {
+    "avatar": "https://pbs.twimg.com/profile_images/1310548448249217026/MX_Bjwzw_400x400.jpg",
+    "displayName": "David Attenborough",
+    "username": "AttenboroughSir",
+    "text": "(PARODY/SATIRE) “If we disappeared overnight, the world would probably be better off.”",
+    "verified": true
+  },
+  {
+    "avatar": "https://pbs.twimg.com/profile_images/669103856106668033/UF3cgUk4_400x400.jpg",
+    "displayName": "Jeff Bezos",
+    "username": "JeffBezos",
+    "text": "Amazon, Blue Origin, Washington Post",
+    "verified": true
+  },
+  {
+    "avatar": "https://pbs.twimg.com/profile_images/1295975423654977537/dHw9JcrK_400x400.jpg",
+    "displayName": "Elon Musk",
+    "username": "elonmusk",
+    "text": "We must pass The Great Filter",
+    "verified": true
+  }
+]

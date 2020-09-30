@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Profile.scss";
 
 // custom components
@@ -16,6 +16,9 @@ import Tab from "@material-ui/core/Tab";
 import Moment from "react-moment";
 import "moment-timezone";
 
+// import DataTweets from "./data/DataTweets.json";
+// import DataTweetsReplies from "./data/DataTweetsReplies.json";
+
 // firebase
 import { db, auth } from "../../firebase/firebase";
 
@@ -28,6 +31,27 @@ import { NavLink } from "react-router-dom";
 const Profile = () => {
   // context data
   const [{ user }, dispatch] = useStateValue();
+
+  const [tab01Content, setTab01Content] = useState([]);
+  const [tab02Content, setTab02Content] = useState([]);
+  // fetch tab data
+  useEffect(() => {
+    const fecthData = async (filename, tab) => {
+      fetch(filename)
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("data is:", data);
+          if (tab === "tab1") {
+            setTab01Content(data);
+          } else if (tab === "tab2") {
+            setTab02Content(data);
+          }
+        });
+    };
+
+    fecthData("./data/DataTweets.json", "tab1");
+    fecthData("./data/DataTweetsReplies.json", "tab2");
+  }, []);
 
   // edit profile
   const [editOpen, setEditOpen] = useState(false);
@@ -133,51 +157,29 @@ const Profile = () => {
 
         <TabPanel value={tab} index={0} className="profile__tabContent">
           <h3 className="profile__tabContenttitle">Who to follow</h3>
-          <ProfileTabEntry
-            key={"1"}
-            avatar={
-              "https://pbs.twimg.com/profile_images/1310548448249217026/MX_Bjwzw_400x400.jpg"
-            }
-            displayName={"David Attenborough"}
-            username={"AttenboroughSir"}
-            text={
-              "(PARODY/SATIRE) “If we disappeared overnight, the world would probably be better off.”"
-            }
-            verified={true}
-          />
-          <ProfileTabEntry
-            key={"2"}
-            avatar={
-              "https://pbs.twimg.com/profile_images/669103856106668033/UF3cgUk4_400x400.jpg"
-            }
-            displayName={"Jeff Bezos"}
-            username={"JeffBezos"}
-            text={"Amazon, Blue Origin, Washington Post"}
-            verified={true}
-          />
-          <ProfileTabEntry
-            key={"3"}
-            avatar={
-              "https://pbs.twimg.com/profile_images/1295975423654977537/dHw9JcrK_400x400.jpg"
-            }
-            displayName={"Elon Musk"}
-            username={"elonmusk"}
-            text={"We must pass The Great Filter"}
-            verified={true}
-          />
+          {tab01Content.map((item, index) => (
+            <ProfileTabEntry
+              key={index}
+              avatar={item.avatar}
+              displayName={item.displayName}
+              username={item.username}
+              text={item.text}
+              verified={item.verified}
+            />
+          ))}
         </TabPanel>
         <TabPanel value={tab} index={1} className="profile__tabContent">
           <h3 className="profile__tabContenttitle">Who to follow</h3>
-          <ProfileTabEntry
-            key={"4"}
-            avatar={
-              "https://pbs.twimg.com/profile_images/1109698790531883008/fcPbYNjK_400x400.jpg"
-            }
-            displayName={"mark zuckerberg"}
-            username={"markzucky"}
-            text={"I would pay someone to write an essay about me"}
-            verified={true}
-          />
+          {tab02Content.map((item, index) => (
+            <ProfileTabEntry
+              key={index}
+              avatar={item.avatar}
+              displayName={item.displayName}
+              username={item.username}
+              text={item.text}
+              verified={item.verified}
+            />
+          ))}
         </TabPanel>
         <TabPanel value={tab} index={2} className="profile__tabContent">
           <div className="profile__tabContentBody">

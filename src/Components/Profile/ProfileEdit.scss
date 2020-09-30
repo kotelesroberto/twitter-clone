@@ -4,6 +4,7 @@
   .MuiDialog-paper {
     width: 100%;
     max-width: 70vw;
+    border-radius: 15px;
   }
 
   .MuiDialogActions-root {
@@ -13,10 +14,18 @@
   }
 
   .MuiDialogContent-root {
-    background-color: $twitter-bgcolor;
+    background-color: $twitter-inputbg;
     padding: 5px;
     margin: 10px;
-    border-bottom: 1px solid $grey;
+    border-bottom: 2px solid $grey;
+
+    &.active {
+      border-bottom-color: $twitter-blue;
+
+      .MuiFormLabel-root {
+        color: $twitter-blue;
+      }
+    }
   }
   .MuiDialogTitle-root {
     padding: 5px;
@@ -41,6 +50,9 @@
   }
 
   &__close {
+    .MuiSvgIcon-root {
+      color: $twitter-blue;
+    }
   }
   &__save {
     &.MuiButtonBase-root {
@@ -54,5 +66,17 @@
     resize: none;
     width: 100%;
     outline: none;
+  }
+
+  &__error {
+    color: $white;
+    font-weight: 800;
+    background-color: $twitter-blue;
+    padding: 10px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    border-radius: 5px;
+    transform: translate(-50%, -50%);
   }
 }

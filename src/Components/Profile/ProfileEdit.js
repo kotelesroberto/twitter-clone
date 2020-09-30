@@ -22,11 +22,13 @@ const ProfileEdit = ({ editOpen, setEditOpen }) => {
   // context data
   const [{ user }, dispatch] = useStateValue();
 
+  const [formInAction, setFormInAction] = useState(false);
+  const [error, setError] = useState("");
   const [name, setName] = useState(user.displayName);
-  const [bio, setBio] = useState(user.bio);
-  const [location, setLocation] = useState(user.location);
-  const [website, setWebsite] = useState(user.website);
-  const [birthday, setBirthday] = useState(user.birthday);
+  const [bio, setBio] = useState(user.bio ? user.bio : "");
+  const [location, setLocation] = useState(user.location ? user.location : "");
+  const [website, setWebsite] = useState(user.website ? user.website : "");
+  const [birthday, setBirthday] = useState(user.birthday ? user.birthday : "");
 
   const handleChange_Field = (id, value) => {
     switch (id) {
@@ -34,24 +36,26 @@ const ProfileEdit = ({ editOpen, setEditOpen }) => {
         setName(value);
         break;
       case "bio":
-        setName(setBio);
+        setBio(value);
         break;
       case "location":
-        setName(setLocation);
+        setLocation(value);
         break;
       case "website":
-        setName(setWebsite);
+        setWebsite(value);
         break;
       case "birthday":
-        setName(setBirthday);
+        setBirthday(value);
         break;
     }
     // console.log("id", id);
-    // console.log("val", value);
+    console.log("val", value);
     // e.target.value;
   };
 
   const saveProfile = () => {
+    setFormInAction(true);
+
     const userFirebase = auth.currentUser;
     const newPhotoURL =
       "https://images-na.ssl-images-amazon.com/images/I/71%2BwSVmufAL._AC_SL1200_.jpg";
@@ -85,11 +89,25 @@ const ProfileEdit = ({ editOpen, setEditOpen }) => {
           type: "SET_USER",
           user: tempUser,
         });
+
+        setFormInAction(false);
+        setEditOpen(false);
       })
       .catch(function (error) {
         // An error happened.
         console.log("error >>>", error);
+        setFormInAction(false);
       });
+  };
+
+  const addFocus = (e) => {
+    // e.target.parentElement.parentElement.parentElement.classList.add("active");
+    e.target.closest(".MuiDialogContent-root").classList.add("active");
+  };
+
+  const removeFocus = (e) => {
+    // e.target.parentElement.parentElement.parentElement.classList.remove("active");
+    e.target.closest(".MuiDialogContent-root").classList.remove("active");
   };
 
   return (
@@ -113,8 +131,9 @@ const ProfileEdit = ({ editOpen, setEditOpen }) => {
           onClick={saveProfile}
           color="primary"
           className="profileEdit__save button"
+          disabled={formInAction}
         >
-          Save
+          {formInAction ? "In progress..." : "Save"}
         </Button>
       </DialogActions>
 
@@ -141,7 +160,7 @@ const ProfileEdit = ({ editOpen, setEditOpen }) => {
           </div>
         </div>
       </DialogContent>
-      <DialogContent>
+      <DialogContent onClick={addFocus} onBlur={removeFocus}>
         <InputLabel htmlFor="name" className="profileEdit__label">
           Name
         </InputLabel>
@@ -159,7 +178,7 @@ const ProfileEdit = ({ editOpen, setEditOpen }) => {
           }}
         />
       </DialogContent>
-      <DialogContent>
+      <DialogContent onClick={addFocus} onBlur={removeFocus}>
         <InputLabel htmlFor="bio" className="profileEdit__label">
           Bio
         </InputLabel>
@@ -179,7 +198,7 @@ const ProfileEdit = ({ editOpen, setEditOpen }) => {
           }}
         />
       </DialogContent>
-      <DialogContent>
+      <DialogContent onClick={addFocus} onBlur={removeFocus}>
         <InputLabel htmlFor="location" className="profileEdit__label">
           Location
         </InputLabel>
@@ -197,7 +216,7 @@ const ProfileEdit = ({ editOpen, setEditOpen }) => {
           }}
         />
       </DialogContent>
-      <DialogContent>
+      <DialogContent onClick={addFocus} onBlur={removeFocus}>
         <InputLabel htmlFor="website" className="profileEdit__label">
           Website
         </InputLabel>
@@ -215,7 +234,7 @@ const ProfileEdit = ({ editOpen, setEditOpen }) => {
           }}
         />
       </DialogContent>
-      <DialogContent>
+      <DialogContent onClick={addFocus} onBlur={removeFocus}>
         <InputLabel htmlFor="birthday" className="profileEdit__label">
           Birthday
         </InputLabel>
@@ -233,6 +252,8 @@ const ProfileEdit = ({ editOpen, setEditOpen }) => {
           }}
         />
       </DialogContent>
+
+      {error && <span className="profileEdit__error">{error}</span>}
     </Dialog>
   );
 };
