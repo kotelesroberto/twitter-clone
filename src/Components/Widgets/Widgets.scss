@@ -18,13 +18,24 @@
     display: flex;
     align-items: center;
     background-color: $twitter-bgcolor;
+    border: 1px solid $twitter-bgcolor;
     padding: 10px;
     border-radius: 20px;
     margin-top: 10px;
     margin-left: 20px;
 
-    & > input {
-      background-color: $twitter-bgcolor;
+    &:hover {
+      background-color: $white;
+      border: 1px solid $twitter-color;
+
+      .widgets__searchIcon {
+        color: $twitter-color;
+      }
+    }
+
+    & > input,
+    input {
+      background-color: transparent;
       border: none;
       outline: none;
       flex: 1;

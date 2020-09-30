@@ -1,14 +1,58 @@
 @import "../../style/base/colors";
 
-.SearchDialog {
-  .MuiList-root {
-    & > * {
-      border-top: 1px solid $twitter-bgcolor;
+.searchDialog {
+  &__input {
+    background-color: transparent;
+  }
+
+  &__list {
+    width: 350px;
+    max-height: 70vh;
+    margin: 0;
+    margin-left: -35px;
+    margin-top: 13px;
+    padding: 0;
+    z-index: 1;
+    position: absolute;
+    list-style: none;
+    background-color: white;
+    overflow: auto;
+    max-height: 200;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+
+    li {
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      transition: all 0.3s ease-in-out;
+
+      &:focus {
+      }
+      &:active {
+        background-color: $twitter-bgcolor;
+        color: white;
+      }
+    }
+
+    li[data-focus="true"] {
+      background-color: $twitter-bgcolor;
+      color: "white";
+      cursor: pointer;
     }
   }
 
-  .MuiPopover-paper {
-    border-radius: 5px;
-    overflow: visible;
+  &__listItemAvatar {
+    margin-right: 10px;
+  }
+
+  &__listItemInfo {
+    display: flex;
+    flex-direction: column;
+    font-weight: 800;
+
+    span {
+      font-weight: 400;
+      color: $twitter-grey;
+    }
   }
 }
