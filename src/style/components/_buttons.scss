@@ -10,3 +10,32 @@
     opacity: 0.5;
   }
 }
+
+.button {
+  &.MuiButton-root {
+    background-color: $twitter-color;
+    border: none;
+    color: $white;
+    font-weight: 800;
+    text-transform: inherit;
+    border-radius: 30px;
+    height: 40px;
+
+    &:hover {
+      background-color: $twitter-color;
+      color: $white;
+    }
+  }
+
+  &.button--outline {
+    &.MuiButton-root {
+      background-color: $white;
+      border: 1px solid $twitter-color;
+      color: $twitter-blue;
+      &:hover {
+        background-color: $twitter-color2;
+        color: $twitter-blue;
+      }
+    }
+  }
+}

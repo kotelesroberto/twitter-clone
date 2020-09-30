@@ -41,6 +41,9 @@ function App() {
               tempAuthUser.displayName = docData.displayName;
               tempAuthUser.username = docData.username;
               tempAuthUser.photoURL = docData.photoURL;
+              tempAuthUser.teaserImage = docData.teaserImage;
+              tempAuthUser.location = docData.location;
+              tempAuthUser.bio = docData.bio;
 
               dispatch({
                 type: "SET_USER",
@@ -73,7 +76,8 @@ function App() {
         )} */}
 
         {!user && loginScreenType === "landing" && <LoginScreen />}
-        {!user && loginScreenType === "panel" && <Login />}
+        {!user && loginScreenType === "login" && <Login />}
+        {!user && loginScreenType === "signup" && <Login />}
 
         {user && (
           <>

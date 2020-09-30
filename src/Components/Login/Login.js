@@ -31,6 +31,7 @@ const Login = () => {
       .then((auth) => {
         // it successfully logged in with email and password
         console.log(auth);
+
         if (auth) {
           history.push("/home"); // redirect to homepage
         }
@@ -55,6 +56,63 @@ const Login = () => {
     // });
 
     // history.replace("/home");
+  };
+
+  const doSignup = (e) => {
+    e.preventDefault();
+    // do some fancy Firebase register stuff
+    auth
+      .createUserWithEmailAndPassword(username, password)
+      .then((authResp) => {
+        setError("");
+
+        // it successfully created a new user with email and password
+        console.log(authResp);
+        if (authResp) {
+          let userFirebase = auth.currentUser;
+          console.log("userFirebase >>>", userFirebase);
+          const newUsername = username.split("@")[0].replace(".", "_");
+
+          // save extra data into Firebase database
+          db.collection("users")
+            .doc(userFirebase.uid)
+            .set({
+              displayName: newUsername,
+              username: newUsername,
+              bio: "",
+              location: "",
+              website: "",
+              birthday: "",
+            })
+            .then(() => {
+              console.log("Document successfully written!");
+            });
+
+          dispatch({
+            type: "SET_LOGINSCREEN",
+            loginScreenType: "landing",
+          });
+
+          history.push("/"); // redirect to homepage
+        }
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        if (error.code === "auth/weak-password") {
+          setError("The password is too weak.");
+        } else {
+          setError(error.message);
+        }
+        console.log(error);
+      });
+  };
+
+  const handleSignup = (e) => {
+    e.preventDefault();
+    dispatch({
+      type: "SET_LOGINSCREEN",
+      loginScreenType: "signup",
+    });
   };
 
   const getASecureRandomPassword = () => {
@@ -97,46 +155,6 @@ const Login = () => {
       });
   };
 
-  const handleSignup = (e) => {
-    e.preventDefault();
-    // do some fancy Firebase register stuff
-    auth
-      .createUserWithEmailAndPassword(username, password)
-      .then((authResp) => {
-        setError("");
-
-        // it successfully created a new user with email and password
-        console.log(authResp);
-        if (authResp) {
-          let userFirebase = auth.currentUser;
-          console.log("userFirebase >>>", userFirebase);
-          const newUsername = username.split("@")[0].replace(".", "_");
-
-          // save extra data into Firebase database
-          db.collection("users")
-            .doc(userFirebase.uid)
-            .set({
-              displayName: newUsername,
-              username: newUsername,
-            })
-            .then(() => {
-              console.log("Document successfully written!");
-            });
-
-          history.push("/"); // redirect to homepage
-        }
-      })
-      .catch((error) => {
-        // Handle Errors here.
-        if (error.code === "auth/weak-password") {
-          setError("The password is too weak.");
-        } else {
-          setError(error.message);
-        }
-        console.log(error);
-      });
-  };
-
   // const loginFacebook = (e) => {
   //   e.preventDefault();
 
@@ -168,7 +186,7 @@ const Login = () => {
         <TwitterIcon className="login__twitterIcon" />
       </NavLink>
 
-      <h2>Log in to Twitter</h2>
+      <h2>{loginScreenType === "signup" ? "Sign up" : "Log in to"} Twitter</h2>
 
       {error && <p className="login__error">{error}</p>}
 
@@ -195,32 +213,48 @@ const Login = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <Button
-          key="TweetButton"
-          variant="outlined"
-          className="login__button"
-          fullWidth
-          onClick={doLogin}
-        >
-          Log in
-        </Button>
+        {loginScreenType === "login" && (
+          <Button
+            key="TweetButton"
+            variant="outlined"
+            className="login__button"
+            fullWidth
+            onClick={doLogin}
+          >
+            Log in
+          </Button>
+        )}
 
-        <ul className="login__footer">
-          <li
-            onClick={(e) => {
-              handleForgotPassword(e);
-            }}
+        {loginScreenType === "signup" && (
+          <Button
+            key="TweetButton"
+            variant="outlined"
+            className="login__button"
+            fullWidth
+            onClick={doSignup}
           >
-            Forgot password?
-          </li>
-          <li
-            onClick={(e) => {
-              handleSignup(e);
-            }}
-          >
-            Sign up for Twitter
-          </li>
-        </ul>
+            Sign up
+          </Button>
+        )}
+
+        {loginScreenType === "login" && (
+          <ul className="login__footer">
+            <li
+              onClick={(e) => {
+                handleForgotPassword(e);
+              }}
+            >
+              Forgot password?
+            </li>
+            <li
+              onClick={(e) => {
+                handleSignup(e);
+              }}
+            >
+              Sign up for Twitter
+            </li>
+          </ul>
+        )}
       </form>
     </div>
   );

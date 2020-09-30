@@ -77,7 +77,7 @@ const Sidebar = () => {
           <Button
             key="TweetButton"
             variant="outlined"
-            className="sidebar__tweetButton"
+            className="sidebar__tweetButton button"
             fullWidth
           >
             <img

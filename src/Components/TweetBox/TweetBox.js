@@ -82,7 +82,7 @@ const TweetBox = () => {
           <Button
             type="button"
             variant="outlined"
-            className="tweetBox__tweetButton"
+            className="tweetBox__tweetButton button"
             onClick={sendTweet}
           >
             Tweet

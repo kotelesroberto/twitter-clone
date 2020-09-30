@@ -22,13 +22,20 @@ const LoginScreen = () => {
 
   const history = useHistory(); // it allows us to programmatically change the url (after login for example)
 
-  const doSignup = () => {};
+  const doSignup = () => {
+    // history.replace("/login");
+
+    dispatch({
+      type: "SET_LOGINSCREEN",
+      loginScreenType: "signup",
+    });
+  };
   const doLogin = () => {
     // history.replace("/login");
 
     dispatch({
       type: "SET_LOGINSCREEN",
-      loginScreenType: "panel",
+      loginScreenType: "login",
     });
   };
 

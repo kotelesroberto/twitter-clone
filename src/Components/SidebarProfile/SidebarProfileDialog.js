@@ -20,17 +20,14 @@ const SidebarProfileDialog = ({ dialog, setDialog, anchorEl }) => {
   // context data
   const [{ user }, dispatch] = useStateValue();
 
-  const handleClose = () => {
-    if (user) {
-      auth.signOut();
-    }
-    setDialog(false);
-  };
-
   const handleListItemClick = (act) => {
     if (act === "logout") {
       if (user) {
         auth.signOut();
+        dispatch({
+          type: "SET_LOGINSCREEN",
+          loginScreenType: "landing",
+        });
       }
 
       // dispatch({
