@@ -10,7 +10,7 @@ import { Link, NavLink, useHistory } from "react-router-dom";
 // React Context
 import { useStateValue } from "../../StateProvider";
 
-import { auth } from "../../firebase/firebase";
+import { auth, db } from "../../firebase/firebase";
 
 const Login = () => {
   // context data
@@ -35,7 +35,7 @@ const Login = () => {
           history.push("/home"); // redirect to homepage
         }
       })
-      .catch((error) => alert(error.message));
+      .catch((error) => setError(error.message));
 
     // dispatch({
     //   type: "SET_USER",
@@ -57,26 +57,78 @@ const Login = () => {
     // history.replace("/home");
   };
 
-  const handleForgotPassword = (e) => {};
+  const getASecureRandomPassword = () => {
+    var length = 8,
+      charset =
+        "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
+      retVal = "";
+    for (var i = 0, n = charset.length; i < length; ++i) {
+      retVal += charset.charAt(Math.floor(Math.random() * n));
+    }
+    return retVal;
+  };
+
+  const handleForgotPassword = (e) => {
+    var user = auth.currentUser;
+    var newPassword = getASecureRandomPassword();
+
+    // SIMPLE UPDATE PASSWORD
+    // user
+    //   .updatePassword(newPassword)
+    //   .then(function () {
+    //     // Update successful.
+    //   })
+    //   .catch(function (error) {
+    //     // An error happened.
+    //   });
+
+    // SEND PASSWORD RESET EMAIL
+    auth
+      .sendPasswordResetEmail(username)
+      .then(function () {
+        // Email sent.
+        setError(
+          "Message sent with the new password. Please check your emails!"
+        );
+      })
+      .catch(function (error) {
+        // An error happened.
+        setError(error.message);
+      });
+  };
 
   const handleSignup = (e) => {
     e.preventDefault();
     // do some fancy Firebase register stuff
     auth
       .createUserWithEmailAndPassword(username, password)
-      .then((auth) => {
+      .then((authResp) => {
         setError("");
 
         // it successfully created a new user with email and password
-        console.log(auth);
-        if (auth) {
+        console.log(authResp);
+        if (authResp) {
+          let userFirebase = auth.currentUser;
+          console.log("userFirebase >>>", userFirebase);
+          const newUsername = username.split("@")[0].replace(".", "_");
+
+          // save extra data into Firebase database
+          db.collection("users")
+            .doc(userFirebase.uid)
+            .set({
+              displayName: newUsername,
+              username: newUsername,
+            })
+            .then(() => {
+              console.log("Document successfully written!");
+            });
+
           history.push("/"); // redirect to homepage
         }
       })
       .catch((error) => {
         // Handle Errors here.
         if (error.code === "auth/weak-password") {
-          // alert("The password is too weak.");
           setError("The password is too weak.");
         } else {
           setError(error.message);
@@ -84,6 +136,31 @@ const Login = () => {
         console.log(error);
       });
   };
+
+  // const loginFacebook = (e) => {
+  //   e.preventDefault();
+
+  //   var provider = authFB;
+  //   // You can add additional scopes to the provider:
+  //   provider.addScope("email");
+  //   provider.addScope("user_friends");
+
+  //   auth
+  //     .signInWithPopup(provider)
+  //     .then(function (result) {
+  //       // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+  //       var token = result.credential.accessToken;
+  //       // The signed-in user info.
+  //       var user = result.user;
+  //       // ...
+  //     })
+  //     .catch(function (error) {
+  //       // Handle Errors here.
+  //       // var errorCode = error.code;
+  //       console.log(error);
+  //       setError(error.message);
+  //     });
+  // };
 
   return (
     <div className="login">
@@ -97,7 +174,7 @@ const Login = () => {
 
       <form action="">
         <label htmlFor="username" className="login__label">
-          Phone, email, or username ()
+          Phone, email, or username
         </label>
         <input
           className="login__input"
@@ -125,7 +202,7 @@ const Login = () => {
           fullWidth
           onClick={doLogin}
         >
-          DEMO Log in (just click)
+          Log in
         </Button>
 
         <ul className="login__footer">

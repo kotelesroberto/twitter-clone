@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.scss";
 import Login from "./Components/Login/Login";
 import General from "./Components/General/General";
+import Profile from "./Components/Profile/Profile";
 import LoginScreen from "./Components/LoginScreen/LoginScreen";
 import Sidebar from "./Components/Sidebar/Sidebar";
 import Feed from "./Components/Feed/Feed";
@@ -13,7 +14,7 @@ import Widgets from "./Components/Widgets/Widgets";
 import { useStateValue } from "./StateProvider";
 
 // firebase
-import { auth } from "./firebase/firebase";
+import { auth, db } from "./firebase/firebase";
 
 function App() {
   // context data
@@ -29,14 +30,29 @@ function App() {
         // the user just logged in / the user was logged
         let tempAuthUser = { ...authUser };
 
-        tempAuthUser.photoURL =
-          "https://m.media-amazon.com/images/I/51qyXfsyjRL._AA256_.jpg";
-        tempAuthUser.username = "JimiHendrix";
+        // read relevant extra user info from database
+        db.collection("users")
+          .doc(tempAuthUser.uid)
+          .get()
+          .then((doc) => {
+            if (doc.exists) {
+              // console.log("Document data:", doc.data());
+              const docData = doc.data();
+              tempAuthUser.displayName = docData.displayName;
+              tempAuthUser.username = docData.username;
+              tempAuthUser.photoURL = docData.photoURL;
 
-        dispatch({
-          type: "SET_USER",
-          user: tempAuthUser,
-        });
+              dispatch({
+                type: "SET_USER",
+                user: tempAuthUser,
+              });
+            } else {
+              console.log("No such document for this user!");
+            }
+          })
+          .catch(function (error) {
+            console.log("Error getting document:", error);
+          });
       } else {
         // the user is locked out
         dispatch({
@@ -85,7 +101,7 @@ function App() {
                 <General text="lists" />
               </Route>
               <Route path="/profile">
-                <General text="profile" />
+                <Profile />
               </Route>
               <Route path="/more">
                 <General text="more" />

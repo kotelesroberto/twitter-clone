@@ -27,14 +27,14 @@ const SidebarProfileBadge = ({ user, icon }) => {
       <div className="sidebarProfileBadge__avatar">
         <Avatar
           className="sidebarProfileBadge__avatarAvatar"
-          alt={user.displayName ? user.displayName : user.email}
+          alt={user.displayName}
           src={user.photoURL}
         />
       </div>
 
       <div className="sidebarProfileBadge__body">
         <h3>
-          {user.displayName ? user.displayName : user.email}
+          {user.displayName}
           <span>@{user.username}</span>
         </h3>
       </div>
