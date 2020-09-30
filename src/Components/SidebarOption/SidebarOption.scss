@@ -33,6 +33,13 @@
   &--active {
     color: $twitter-color;
   }
+  &--demo {
+    &:after {
+      content: "demo";
+      font-style: italic;
+      font-size: 10px;
+    }
+  }
 
   .active & {
     color: $twitter-color;

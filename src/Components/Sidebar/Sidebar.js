@@ -32,7 +32,7 @@ const Sidebar = () => {
         </NavLink>
 
         <NavLink to="/explore" activeClassName="active">
-          <SidebarOption text="Explore" Icon={SearchIcon} />
+          <SidebarOption text="Explore" Icon={SearchIcon} nature={"demo"} />
           {/* <SidebarOption text="Explore" Character={"#"} /> */}
         </NavLink>
 
@@ -41,6 +41,7 @@ const Sidebar = () => {
             key="Notifications"
             text="Notifications"
             Icon={NotificationsNoneIcon}
+            nature={"demo"}
           />
         </NavLink>
 
@@ -49,6 +50,7 @@ const Sidebar = () => {
             key="Messages"
             text="Messages"
             Icon={MailOutlineIcon}
+            nature={"demo"}
           />
         </NavLink>
 
@@ -57,11 +59,17 @@ const Sidebar = () => {
             key="Bookmarks"
             text="Bookmarks"
             Icon={BookmarkBorderIcon}
+            nature={"demo"}
           />
         </NavLink>
 
         <NavLink to="/lists" activeClassName="active">
-          <SidebarOption key="Lists" text="Lists" Icon={ListAltIcon} />
+          <SidebarOption
+            key="Lists"
+            text="Lists"
+            Icon={ListAltIcon}
+            nature={"demo"}
+          />
         </NavLink>
 
         <NavLink to="/profile" activeClassName="active">
@@ -69,7 +77,12 @@ const Sidebar = () => {
         </NavLink>
 
         <NavLink to="/more" activeClassName="active">
-          <SidebarOption key="More" text="More" Icon={MoreHorizIcon} />
+          <SidebarOption
+            key="More"
+            text="More"
+            Icon={MoreHorizIcon}
+            nature={"demo"}
+          />
         </NavLink>
 
         {/* Button -> Tweet */}
