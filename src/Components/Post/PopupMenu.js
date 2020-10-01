@@ -11,6 +11,13 @@ import CreateIcon from "@material-ui/icons/Create";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import BookmarkBorderIcon from "@material-ui/icons/BookmarkBorder";
 import LinkIcon from "@material-ui/icons/Link";
+import EmojiFlagsIcon from "@material-ui/icons/EmojiFlags";
+import CodeIcon from "@material-ui/icons/Code";
+import BlockIcon from "@material-ui/icons/Block";
+import VolumeOffIcon from "@material-ui/icons/VolumeOff";
+import PostAddIcon from "@material-ui/icons/PostAdd";
+import PersonAddDisabledIcon from "@material-ui/icons/PersonAddDisabled";
+import SentimentVeryDissatisfiedIcon from "@material-ui/icons/SentimentVeryDissatisfied";
 
 const PopupMenu = ({ dialog, setDialog, anchorEl, setAnchorEl, menuitems }) => {
   const handleClose = () => {
@@ -42,6 +49,27 @@ const PopupMenu = ({ dialog, setDialog, anchorEl, setAnchorEl, menuitems }) => {
         break;
       case "LinkIcon":
         iconSvg = <LinkIcon />;
+        break;
+      case "EmojiFlagsIcon":
+        iconSvg = <EmojiFlagsIcon />;
+        break;
+      case "CodeIcon":
+        iconSvg = <CodeIcon />;
+        break;
+      case "BlockIcon":
+        iconSvg = <BlockIcon />;
+        break;
+      case "VolumeOffIcon":
+        iconSvg = <VolumeOffIcon />;
+        break;
+      case "PostAddIcon":
+        iconSvg = <PostAddIcon />;
+        break;
+      case "PersonAddDisabledIcon":
+        iconSvg = <PersonAddDisabledIcon />;
+        break;
+      case "SentimentVeryDissatisfiedIcon":
+        iconSvg = <SentimentVeryDissatisfiedIcon />;
         break;
     }
 

@@ -89,6 +89,10 @@
       &:hover {
         color: $twitter-color;
       }
+
+      &.liked {
+        color: $red;
+      }
     }
   }
 }

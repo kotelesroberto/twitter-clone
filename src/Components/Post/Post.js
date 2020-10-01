@@ -41,10 +41,58 @@ const Post = forwardRef(
     const [anchorEl, setAnchorEl] = useState(false);
 
     const [menuitems, setMenuitems] = useState([]);
+    const [liked, setLiked] = useState(false);
+
+    const addComment = () => {
+      alert("adding comment is not available in this demo");
+    };
 
     return (
       <article className="post" ref={ref}>
-        <ExpandMoreIcon className="post__dropDown" />
+        <ExpandMoreIcon
+          className="post__dropDown"
+          onClick={(e) => {
+            setMenuitems([
+              {
+                text: "Not interested in this Tweet",
+                link: "",
+                icon: "SentimentVeryDissatisfiedIcon",
+              },
+              {
+                text: "Unfollow @Twitter",
+                link: "",
+                icon: "PersonAddDisabledIcon",
+              },
+              {
+                text: "Add/remove from Lists",
+                link: "",
+                icon: "PostAddIcon",
+              },
+              {
+                text: "Mute @Twitter",
+                link: "",
+                icon: "VolumeOffIcon",
+              },
+              {
+                text: "Block @Twitter",
+                link: "",
+                icon: "BlockIcon",
+              },
+              {
+                text: "Embed Tweet",
+                link: "",
+                icon: "CodeIcon",
+              },
+              {
+                text: "Report Tweet",
+                link: "",
+                icon: "EmojiFlagsIcon",
+              },
+            ]);
+            setAnchorEl(e.currentTarget);
+            setDialog(!dialog);
+          }}
+        />
         <div className="post__avatar">
           <Avatar className="tweetBox__avatar" alt="" src={avatar} />
         </div>
@@ -71,7 +119,12 @@ const Post = forwardRef(
 
           <div className="post__footer">
             <div>
-              <ChatBubbleOutlineIcon fontSize="small" />{" "}
+              <ChatBubbleOutlineIcon
+                fontSize="small"
+                onClick={() => {
+                  addComment();
+                }}
+              />{" "}
               {numComments && <span>{numComments}</span>}
             </div>
             <div>
@@ -97,7 +150,13 @@ const Post = forwardRef(
               {retweets && <span>{retweets}</span>}
             </div>
             <div>
-              <FavoriteBorderIcon fontSize="small" />{" "}
+              <FavoriteBorderIcon
+                fontSize="small"
+                onClick={() => {
+                  setLiked(!liked);
+                }}
+                className={liked ? "liked" : ""}
+              />{" "}
               {likes && <span>{likes}</span>}
             </div>
             <div>
