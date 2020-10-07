@@ -12,6 +12,8 @@ import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 import { IconButton } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
 
+import ProfileEditImages from "./ProfileEditImages";
+
 // firebase
 import { db, auth } from "../../firebase/firebase";
 
@@ -138,28 +140,8 @@ const ProfileEdit = ({ editOpen, setEditOpen }) => {
       </DialogActions>
 
       {/* Teaser photo */}
-      <DialogContent>
-        <div
-          className="profile__teaser"
-          style={{ backgroundImage: `url(${user.teaserImage})` }}
-        >
-          {/* Teaser image comes here */}
-        </div>
+      <ProfileEditImages />
 
-        <div className="profile__header">
-          <div className="profile__strip">
-            <Avatar
-              className="profile__avatar"
-              alt={user.username}
-              src={
-                user.photoURL
-                  ? user.photoURL
-                  : "./assets/default_profile_400x400.png"
-              }
-            />
-          </div>
-        </div>
-      </DialogContent>
       <DialogContent onClick={addFocus} onBlur={removeFocus}>
         <InputLabel htmlFor="name" className="profileEdit__label">
           Name
