@@ -9,6 +9,8 @@ import LoginScreen from "./Components/LoginScreen/LoginScreen";
 import Sidebar from "./Components/Sidebar/Sidebar";
 import Feed from "./Components/Feed/Feed";
 import Widgets from "./Components/Widgets/Widgets";
+import FileUpload from "./Components/FileUpload/FileUpload";
+import FileUploadFireBase from "./Components/FileUploadFireBase/FileUploadFireBase";
 
 // React Context
 import { useStateValue } from "./StateProvider";
@@ -92,6 +94,10 @@ function App() {
             </Switch>
 
             <Switch>
+              <Route path="/upload">
+                {/* <FileUpload /> */}
+                <FileUploadFireBase />
+              </Route>
               <Route path="/explore">
                 <General text="explore" />
               </Route>

@@ -118,13 +118,13 @@ const ProfileEdit = ({ editOpen, setEditOpen }) => {
       className="profileEdit"
     >
       <DialogActions>
-        <IconButton className="profileEdit__close">
-          <CloseIcon
-            fontSize="medium"
-            onClick={() => {
-              setEditOpen(false);
-            }}
-          ></CloseIcon>
+        <IconButton
+          className="profileEdit__close"
+          onClick={() => {
+            setEditOpen(false);
+          }}
+        >
+          <CloseIcon fontSize="small"></CloseIcon>
         </IconButton>
         <DialogTitle id="form-dialog-title">Edit profile</DialogTitle>
         <Button
@@ -190,7 +190,7 @@ const ProfileEdit = ({ editOpen, setEditOpen }) => {
           label=""
           placeholder="Add your bio"
           type="text"
-          fullWidth
+          // fullWidth
           className="profileEdit__textarea"
           value={bio}
           onChange={(e) => {

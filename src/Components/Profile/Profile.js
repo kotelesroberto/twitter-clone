@@ -34,6 +34,7 @@ const Profile = () => {
 
   const [tab01Content, setTab01Content] = useState([]);
   const [tab02Content, setTab02Content] = useState([]);
+
   // fetch tab data
   useEffect(() => {
     const fecthData = async (filename, tab) => {

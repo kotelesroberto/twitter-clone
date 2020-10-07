@@ -1,0 +1,19 @@
+@import "../../style/base/colors";
+@import "../../style/utilities/breakpoints";
+
+.fileUploadFireBase {
+  border-right: 1px solid $twitter-bgcolor;
+  // min-width: fit-content;
+  overflow-y: scroll;
+  flex: 1;
+
+  @media screen and (min-width: $screen-smamed) {
+  }
+
+  @media screen and (min-width: $screen-large) {
+    flex: 0.4;
+  }
+
+  &__container {
+  }
+}

@@ -1,0 +1,46 @@
+@import "../../style/base/colors";
+@import "../../style/utilities/breakpoints";
+
+.fileUpload {
+  border-right: 1px solid $twitter-bgcolor;
+  // min-width: fit-content;
+  overflow-y: scroll;
+  flex: 1;
+
+  @media screen and (min-width: $screen-smamed) {
+  }
+
+  @media screen and (min-width: $screen-large) {
+    flex: 0.4;
+  }
+
+  &__container {
+    // width: 100%;
+    // display: flex;
+    // flex-direction: column;
+    // align-items: center;
+    // justify-content: center;
+    position: relative;
+
+    input {
+      display: none;
+    }
+  }
+
+  &__thumbContainer {
+    height: 160px;
+    width: 160px;
+    border: 2px dashed black;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      max-width: 100%;
+      object-fit: cover;
+    }
+  }
+}
