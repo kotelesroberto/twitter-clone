@@ -93,7 +93,7 @@ const ProfileEdit = ({ editOpen, setEditOpen }) => {
   const saveProfile_01 = () => {
     if (teaserImageAsFile) {
       uploadFile({
-        folder: "images",
+        folder: "images/teasers",
         imageAsFile: teaserImageAsFile,
         setUrl: (resp) => {
           setTeaserImage(resp);
@@ -103,7 +103,7 @@ const ProfileEdit = ({ editOpen, setEditOpen }) => {
 
     if (profileImageAsFile) {
       uploadFile({
-        folder: "images",
+        folder: "images/profiles",
         imageAsFile: profileImageAsFile,
         setUrl: (resp) => {
           setProfileImage(resp);

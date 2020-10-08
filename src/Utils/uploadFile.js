@@ -43,7 +43,7 @@ const uploadFile = async ({ folder = "images", imageAsFile, setUrl }) => {
       // gets the functions from storage refences the image storage in firebase by the children
       // gets the download url then sets the image from firebase as the value for the imgUrl key:
       storage
-        .ref("images")
+        .ref(folder)
         .child(newFileName)
         .getDownloadURL()
         .then((fireBaseUrl) => {

@@ -65,7 +65,7 @@ const TweetBox = () => {
     } else {
       // upload image first and after the content
       uploadFile({
-        folder: "images",
+        folder: "images/tweets",
         imageAsFile: imageAsFile,
         setUrl: (resp) => {
           setImageAsUrl({ imgUrl: resp });
