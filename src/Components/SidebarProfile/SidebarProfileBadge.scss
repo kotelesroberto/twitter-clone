@@ -42,6 +42,10 @@
       content-visibility: visible;
     }
 
+    &.visible-on-mobile {
+      content-visibility: visible;
+    }
+
     & > h3 {
       font-size: 15px;
       span {

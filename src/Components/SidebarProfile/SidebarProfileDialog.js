@@ -60,7 +60,11 @@ const SidebarProfileDialog = ({ dialog, setDialog, anchorEl, setAnchorEl }) => {
       className="sidebarProfileDialog"
     >
       <div className="sidebarProfileDialog__title">
-        <SidebarProfileBadge user={user} icon="check" />
+        <SidebarProfileBadge
+          user={user}
+          icon="check"
+          extraClass="visible-on-mobile"
+        />
       </div>
       <List>
         <ListItem

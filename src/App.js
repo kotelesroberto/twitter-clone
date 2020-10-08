@@ -9,8 +9,6 @@ import LoginScreen from "./Components/LoginScreen/LoginScreen";
 import Sidebar from "./Components/Sidebar/Sidebar";
 import Feed from "./Components/Feed/Feed";
 import Widgets from "./Components/Widgets/Widgets";
-import FileUpload from "./Components/FileUpload/FileUpload";
-import FileUploadFireBase from "./Components/FileUploadFireBase/FileUploadFireBase";
 
 // React Context
 import { useStateValue } from "./StateProvider";
@@ -42,7 +40,9 @@ function App() {
               const docData = doc.data();
               tempAuthUser.displayName = docData.displayName;
               tempAuthUser.username = docData.username;
-              tempAuthUser.photoURL = docData.photoURL;
+              tempAuthUser.photoURL = docData.photoURL
+                ? docData.photoURL
+                : "./assets/default_profile_400x400.png";
               tempAuthUser.teaserImage = docData.teaserImage;
               tempAuthUser.location = docData.location;
               tempAuthUser.bio = docData.bio;
@@ -94,10 +94,6 @@ function App() {
             </Switch>
 
             <Switch>
-              <Route path="/upload">
-                {/* <FileUpload /> */}
-                <FileUploadFireBase />
-              </Route>
               <Route path="/explore">
                 <General text="explore" />
               </Route>

@@ -5,7 +5,7 @@ import { Avatar, Button } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import CheckIcon from "@material-ui/icons/Check";
 
-const SidebarProfileBadge = ({ user, icon }) => {
+const SidebarProfileBadge = ({ user, icon, extraClass }) => {
   let rightIcon;
 
   switch (icon) {
@@ -32,7 +32,7 @@ const SidebarProfileBadge = ({ user, icon }) => {
         />
       </div>
 
-      <div className="sidebarProfileBadge__body">
+      <div className={`sidebarProfileBadge__body ${extraClass}`}>
         <h3>
           {user.displayName}
           <span>@{user.username}</span>

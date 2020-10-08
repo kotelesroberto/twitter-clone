@@ -30,6 +30,7 @@
     background-position: center;
     background-size: cover;
     height: 200px;
+    cursor: pointer;
   }
 
   &__strip {
@@ -44,6 +45,7 @@
       width: 134px;
       height: 134px;
       border: 4px solid $white;
+      cursor: pointer;
     }
   }
 

@@ -93,9 +93,9 @@ const FileUploadFireBase = () => {
       <form onSubmit={handleFireBaseUpload}>
         <input type="file" onChange={handleImageAsFile} />
         <button>upload to firebase</button>
-      </form>
 
-      <img src={imageAsUrl.imgUrl} alt="" />
+        <img src={imageAsUrl.imgUrl} alt="" />
+      </form>
     </div>
   );
 };

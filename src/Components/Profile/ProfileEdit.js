@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./ProfileEdit.scss";
 
 import { Avatar, Button } from "@material-ui/core";
@@ -14,6 +14,14 @@ import CloseIcon from "@material-ui/icons/Close";
 
 import ProfileEditImages from "./ProfileEditImages";
 
+import { uploadFile } from "../../Utils/uploadFile";
+
+// import {
+//   getFileExtension,
+//   getFileName,
+//   safeFileName,
+// } from "../../Utils/filename";
+
 // firebase
 import { db, auth } from "../../firebase/firebase";
 
@@ -24,6 +32,12 @@ const ProfileEdit = ({ editOpen, setEditOpen }) => {
   // context data
   const [{ user }, dispatch] = useStateValue();
 
+  const [teaserImageAsFile, setTeaserImageAsFile] = useState("");
+  const [teaserImage, setTeaserImage] = useState(user.teaserImage);
+
+  const [profileImageAsFile, setProfileImageAsFile] = useState("");
+  const [profileImage, setProfileImage] = useState(user.photoURL);
+
   const [formInAction, setFormInAction] = useState(false);
   const [error, setError] = useState("");
   const [name, setName] = useState(user.displayName);
@@ -31,6 +45,20 @@ const ProfileEdit = ({ editOpen, setEditOpen }) => {
   const [location, setLocation] = useState(user.location ? user.location : "");
   const [website, setWebsite] = useState(user.website ? user.website : "");
   const [birthday, setBirthday] = useState(user.birthday ? user.birthday : "");
+
+  useEffect(() => {
+    // save into database
+    saveIntoDB({
+      teaserImage: teaserImage,
+    });
+  }, [teaserImage]);
+
+  useEffect(() => {
+    // save into database
+    saveIntoDB({
+      photoURL: profileImage,
+    });
+  }, [profileImage]);
 
   const handleChange_Field = (id, value) => {
     switch (id) {
@@ -55,33 +83,63 @@ const ProfileEdit = ({ editOpen, setEditOpen }) => {
     // e.target.value;
   };
 
+  // save changes
   const saveProfile = () => {
+    saveProfile_01(); // teaser and profile images
+    saveProfile_02(); // data entries
+  };
+
+  // save teaser and profile photos
+  const saveProfile_01 = () => {
+    if (teaserImageAsFile) {
+      uploadFile({
+        folder: "images",
+        imageAsFile: teaserImageAsFile,
+        setUrl: (resp) => {
+          setTeaserImage(resp);
+        },
+      });
+    }
+
+    if (profileImageAsFile) {
+      uploadFile({
+        folder: "images",
+        imageAsFile: profileImageAsFile,
+        setUrl: (resp) => {
+          setProfileImage(resp);
+        },
+      });
+    }
+  };
+
+  // Save data entries
+  const saveProfile_02 = () => {
+    // save into database
+    saveIntoDB({
+      displayName: name,
+      bio: bio,
+      location: location,
+      website: website,
+      birthday: birthday,
+    });
+  };
+
+  const saveIntoDB = (dataSet) => {
     setFormInAction(true);
 
     const userFirebase = auth.currentUser;
-    const newPhotoURL =
-      "https://images-na.ssl-images-amazon.com/images/I/71%2BwSVmufAL._AC_SL1200_.jpg";
-    const newTeaserImage =
-      "https://i.cbc.ca/1.5245615.1565722610!/fileImage/httpImage/image.jpg_gen/derivatives/16x9_940/woodstock.jpg";
 
     // save extra data into Firebase database
     db.collection("users")
       .doc(userFirebase.uid)
-      .update({
-        displayName: name,
-        photoURL: newPhotoURL,
-        teaserImage: newTeaserImage,
-        bio: bio,
-        location: location,
-        website: website,
-        birthday: birthday,
-      })
+      .update(dataSet)
       .then(() => {
         console.log("Document successfully written!");
 
         let tempUser = { ...user };
         tempUser.displayName = name;
-        tempUser.photoURL = newPhotoURL;
+        tempUser.photoURL = profileImage;
+        tempUser.teaserImage = teaserImage;
         tempUser.website = website;
         tempUser.birthday = birthday;
 
@@ -94,6 +152,8 @@ const ProfileEdit = ({ editOpen, setEditOpen }) => {
 
         setFormInAction(false);
         setEditOpen(false);
+
+        console.log("saved into DB", dataSet);
       })
       .catch(function (error) {
         // An error happened.
@@ -139,8 +199,25 @@ const ProfileEdit = ({ editOpen, setEditOpen }) => {
         </Button>
       </DialogActions>
 
-      {/* Teaser photo */}
-      <ProfileEditImages />
+      <DialogContent>
+        {/* Teaser photo */}
+        <ProfileEditImages
+          variant={"teaser"}
+          teaserImageAsFile={teaserImageAsFile}
+          setTeaserImageAsFile={setTeaserImageAsFile}
+          profileImageAsFile={profileImageAsFile}
+          setProfileImageAsFile={setProfileImageAsFile}
+          user={user}
+        />
+        <ProfileEditImages
+          variant={"profile"}
+          teaserImageAsFile={teaserImageAsFile}
+          setTeaserImageAsFile={setTeaserImageAsFile}
+          profileImageAsFile={profileImageAsFile}
+          setProfileImageAsFile={setProfileImageAsFile}
+          user={user}
+        />
+      </DialogContent>
 
       <DialogContent onClick={addFocus} onBlur={removeFocus}>
         <InputLabel htmlFor="name" className="profileEdit__label">
