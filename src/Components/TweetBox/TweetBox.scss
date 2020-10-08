@@ -9,10 +9,9 @@
     flex-direction: column;
   }
 
-  &__input {
-    padding: 20px;
+  &__body {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 
     & > input {
       flex: 1;
@@ -21,6 +20,31 @@
       border: none;
       outline: none;
     }
+  }
+
+  &__input {
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__previewContainer {
+    position: relative;
+    margin-top: 15px;
+  }
+
+  &__closePreview {
+    &.MuiButtonBase-root {
+      position: absolute;
+      left: 10px;
+      top: 10px;
+      color: $white;
+    }
+  }
+
+  &__preview {
+    max-width: 100%;
+    border-radius: 15px;
   }
 
   &__avatar {

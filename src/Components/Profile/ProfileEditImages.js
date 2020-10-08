@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./ProfileEditImages.scss";
 
+import PhotoCameraIcon from "@material-ui/icons/PhotoCamera";
 import { Avatar } from "@material-ui/core";
 
 const ProfileEditImages = ({
@@ -75,12 +76,18 @@ const ProfileEditImages = ({
               className="hidden"
             />
           </form>
+
+          <PhotoCameraIcon className="profile__avatarPhotoIcon" />
         </div>
       )}
 
       {variant === "profile" && (
         <div className="profile__header">
           <div className="profile__strip">
+            <PhotoCameraIcon
+              className="profile__avatarPhotoIcon"
+              onClick={() => imageUploader.current.click()}
+            />
             <form onSubmit={handleForm}>
               <Avatar
                 className="profile__avatar"

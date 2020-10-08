@@ -31,6 +31,13 @@
     background-size: cover;
     height: 200px;
     cursor: pointer;
+    position: relative;
+
+    .profile__avatarPhotoIcon {
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
   }
 
   &__strip {
@@ -39,6 +46,7 @@
     justify-content: space-between;
     margin-bottom: 10px;
     margin-top: -69px;
+    position: relative;
   }
   &__avatar {
     &.MuiAvatar-root {
@@ -47,6 +55,15 @@
       border: 4px solid $white;
       cursor: pointer;
     }
+  }
+
+  &__avatarPhotoIcon {
+    position: absolute;
+    left: 55px;
+    z-index: 100;
+    top: 50px;
+    color: white;
+    cursor: pointer;
   }
 
   &__button {
